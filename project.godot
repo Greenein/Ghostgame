@@ -11,8 +11,15 @@ config_version=3
 [application]
 
 config/name="Ghostgame"
+run/main_scene="res://resources/levels/world_01.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
