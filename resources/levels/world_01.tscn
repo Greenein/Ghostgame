@@ -11,13 +11,15 @@ __meta__ = {
 [node name="Ghost" parent="." index="0" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Transform" ]
+movement_speed = 2000
+friction = 0.0001
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
 
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.25, 0.25 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000

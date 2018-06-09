@@ -7,9 +7,10 @@
 script/source = "extends Area2D
 
 const DEADZONE = 0.25;
+const MOVEMENT_DEADZONE = 30;
 
-export(float) var movement_speed = 600;
-export(float) var friction = 0.01;
+export(float) var movement_speed = 2000;
+export(float) var friction = 0.0001;
 
 onready var _position = position;
 var _speed = Vector2(0, 0);
@@ -18,6 +19,14 @@ func _ready():
 	pass
 
 func _limit_movement(axis):
+	if abs(axis.x) < MOVEMENT_DEADZONE:
+		axis.x = 0;
+	if abs(axis.y) < MOVEMENT_DEADZONE:
+		axis.y = 0;
+	
+	return axis;
+
+func _deadzone(axis):
 	var length = axis.length();
 	
 	if length < DEADZONE:
@@ -28,7 +37,7 @@ func _limit_movement(axis):
 	return axis;
 
 func _process(delta):
-	var analog = _limit_movement(Vector2(Input.get_joy_axis(0, JOY_AXIS_0), Input.get_joy_axis(0, JOY_AXIS_1)));
+	var analog = _deadzone(Vector2(Input.get_joy_axis(0, JOY_AXIS_0), Input.get_joy_axis(0, JOY_AXIS_1)));
 	if analog != Vector2(0, 0):
 		_speed += analog * movement_speed * delta;
 	else:
@@ -39,7 +48,7 @@ func _process(delta):
 	
 	$\"Sprite\".flip_h = _speed.x > 0;
 	
-	_position += _speed * delta;
+	_position += _limit_movement(_speed) * delta;
 	_speed *= pow(friction, delta);
 	
 	position = Vector2(round(_position.x), round(_position.y));"
@@ -59,8 +68,8 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = SubResource( 2 )
-movement_speed = 600
-friction = 0.01
+movement_speed = 2000
+friction = 0.0001
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." index="0"]
 
