@@ -11,6 +11,7 @@ const DEADZONE = 0.25;
 export(float) var movement_speed = 600;
 export(float) var friction = 0.01;
 
+onready var _position = position;
 var _speed = Vector2(0, 0);
 
 func _ready():
@@ -38,8 +39,10 @@ func _process(delta):
 	
 	$\"Sprite\".flip_h = _speed.x > 0;
 	
-	position += _speed * delta;
-	_speed *= pow(friction, delta);"
+	_position += _speed * delta;
+	_speed *= pow(friction, delta);
+	
+	position = Vector2(round(_position.x), round(_position.y));"
 
 [sub_resource type="CircleShape2D" id=1]
 
