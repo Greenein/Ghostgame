@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/sounds/Possess.wav" type="AudioStream" id=1]
+[ext_resource path="res://resources/sounds/Unpossess.wav" type="AudioStream" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -17,6 +20,7 @@ func _input(event):
 	if _player != null and event.is_action_pressed(\"possess\"):
 		if _player.state == _player.STATE_IDLE:
 			_player.state = _player.STATE_POSSESSING;
+			$\"Sounds/Possess\".play();
 			emit_signal(\"possessed\", _player);
 		elif _player.state == _player.STATE_POSSESSING:
 			_player.state = _player.STATE_IDLE;
@@ -24,6 +28,7 @@ func _input(event):
 			# Update the private position as well.
 			# TODO (Joex3): Maybe refactor into function in res://resources/entities/Ghost.tscn?
 			_player._position = _player.position;
+			$\"Sounds/Unpossess\".play();
 			emit_signal(\"unpossessed\", _player);
 
 func _area_entered(area):
@@ -35,7 +40,7 @@ func _area_exited(area):
 	if area.name == \"Ghost\":
 		_player = null;"
 
-[node name="Possessable" type="Area2D"]
+[node name="Possessable" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -45,5 +50,27 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = SubResource( 1 )
+
+[node name="Sounds" type="Node2D" parent="." index="0"]
+
+[node name="Possess" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
+
+stream = ExtResource( 1 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Effects"
+area_mask = 1
+
+[node name="Unpossess" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Effects"
+area_mask = 1
 
 

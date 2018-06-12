@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/sounds/LampTurnOn.wav" type="AudioStream" id=3]
 [ext_resource path="res://resources/sounds/LampTurnOff.wav" type="AudioStream" id=4]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Node2D
 
@@ -55,18 +55,15 @@ func _update_sprite():
 custom_solver_bias = 0.0
 extents = Vector2( 10, 17 )
 
-[node name="Lamp" type="Node2D" index="0"]
+[node name="Lamp" type="Node2D"]
 
-script = SubResource( 1 )
+script = SubResource( 3 )
 turned_on = false
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
 
 editor/display_folded = true
 position = Vector2( 0, -24 )
-collision_layer = 3
-collision_mask = 4
-_sections_unfolded = [ "Collision" ]
 
 [node name="Shape" type="CollisionShape2D" parent="Possessable" index="0"]
 
@@ -91,7 +88,7 @@ volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "Effects"
 area_mask = 1
 
 [node name="TurnOff" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
@@ -101,7 +98,7 @@ volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "Effects"
 area_mask = 1
 
 

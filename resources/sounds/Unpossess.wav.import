@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Unpossess.wav-c1720e92187461928b86da3d8b0a36a4.sample"
+
+[deps]
+
+source_file="res://resources/sounds/Unpossess.wav"
+source_md5="d9a7add089901ab9391d4c45eabbf755"
+
+dest_files=[ "res://.import/Unpossess.wav-c1720e92187461928b86da3d8b0a36a4.sample" ]
+dest_md5="035d1f76a2ced1a5b292cb1decc61814"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
