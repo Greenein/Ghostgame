@@ -11,11 +11,15 @@ config_version=3
 [application]
 
 config/name="Ghostgame"
-run/main_scene="res://resources/levels/world_01.tscn"
+run/main_scene="res://resources/levels/World01.tscn"
 config/icon="res://icon.png"
 
 [display]
 
+window/size/width=512
+window/size/height=288
+window/size/test_width=1024
+window/size/test_height=576
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
