@@ -15,11 +15,12 @@ position = Vector2( 239.526, 141.308 )
 
 [node name="TileMap" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 0.459656, 2.6893 )
+position = Vector2( 0.473999, 2.692 )
 tile_data = PoolIntArray( -524303, 10, 0, -524302, 14, 0, -524301, 14, 0, -524300, 14, 0, -524299, 14, 0, -524298, 14, 0, -524297, 14, 0, -524296, 14, 0, -524295, 14, 0, -524294, 14, 0, -524293, 14, 0, -524292, 14, 0, -524291, 14, 0, -524290, 14, 0, -524289, 14, 0, -589824, 14, 0, -589823, 14, 0, -589822, 14, 0, -589821, 14, 0, -589820, 14, 0, -589819, 14, 0, -589818, 14, 0, -589817, 14, 0, -589816, 14, 0, -589815, 14, 0, -589814, 14, 0, -589813, 14, 0, -589812, 14, 0, -589811, 14, 0, -589810, 14, 0, -589809, 14, 0, -589808, 10, 0, -458767, 11, 0, -524272, 9, 0, -393231, 11, 0, -458736, 9, 0, -327695, 11, 0, -393200, 9, 0, -262159, 11, 0, -327664, 9, 0, -196623, 11, 0, -262128, 9, 0, -131087, 11, 0, -196592, 9, 0, -65551, 11, 0, -131056, 9, 0, -15, 11, 0, -65520, 9, 0, 65521, 11, 0, 16, 9, 0, 131057, 11, 0, 65552, 9, 0, 196593, 11, 0, 196597, 21, 0, 196598, 22, 0, 196599, 22, 0, 196600, 23, 0, 131088, 9, 0, 262129, 11, 0, 262133, 25, 0, 262134, 26, 0, 262135, 26, 0, 262136, 27, 0, 196624, 9, 0, 327665, 11, 0, 327669, 25, 0, 327670, 26, 0, 327671, 26, 0, 327672, 27, 0, 262144, 52, 0, 262146, 53, 0, 262147, 54, 0, 262148, 50, 0, 262149, 54, 0, 262150, 51, 0, 262160, 9, 0, 393201, 11, 0, 393205, 25, 0, 393206, 26, 0, 393207, 26, 0, 393208, 27, 0, 327680, 57, 0, 327681, 50, 0, 327682, 62, 0, 327683, 63, 0, 327685, 56, 0, 327689, 33, 0, 327690, 34, 0, 327691, 34, 0, 327692, 34, 0, 327693, 34, 0, 327694, 34, 0, 327695, 34, 0, 327696, 9, 0, 458737, 11, 0, 458741, 25, 0, 458742, 26, 0, 458743, 26, 0, 458744, 27, 0, 393216, 56, 0, 393221, 56, 0, 393226, 40, 0, 393232, 9, 0, 524273, 11, 0, 524277, 25, 0, 524278, 26, 0, 524279, 26, 0, 524280, 27, 0, 524287, 53, 0, 458752, 59, 0, 458757, 56, 0, 458762, 40, 0, 458768, 9, 0, 589809, 10, 0, 589810, 6, 0, 589811, 6, 0, 589812, 6, 0, 589813, 6, 0, 589814, 6, 0, 589815, 6, 0, 589816, 6, 0, 589817, 6, 0, 589818, 6, 0, 589819, 6, 0, 589820, 6, 0, 589821, 6, 0, 589822, 6, 0, 589823, 6, 0, 524288, 6, 0, 524289, 6, 0, 524290, 6, 0, 524291, 6, 0, 524292, 6, 0, 524293, 6, 0, 524294, 6, 0, 524295, 6, 0, 524296, 6, 0, 524297, 6, 0, 524298, 6, 0, 524299, 6, 0, 524300, 6, 0, 524301, 6, 0, 524302, 6, 0, 524303, 6, 0, 524304, 10, 0 )
 
 [node name="Ghost" parent="." index="1" instance=ExtResource( 2 )]
 
+collision_layer = 4
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Camera" type="Camera2D" parent="Ghost" index="3"]
@@ -54,21 +55,19 @@ position = Vector2( 160.474, 82.692 )
 
 [node name="Collision" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Collision" index="0"]
 
 editor/display_folded = true
 position = Vector2( -143.526, 82.692 )
 scale = Vector2( 1, 1.5 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" index="0"]
 
@@ -85,13 +84,13 @@ editor/display_folded = true
 position = Vector2( -7.526, 122.692 )
 scale = Vector2( 0.25, 0.25 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D2" index="0"]
 
@@ -108,13 +107,13 @@ editor/display_folded = true
 position = Vector2( 8.474, 98.692 )
 scale = Vector2( 0.25, 1 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D3" index="0"]
 
@@ -131,13 +130,13 @@ editor/display_folded = true
 position = Vector2( 88.474, 106.692 )
 scale = Vector2( 0.25, 0.75 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D6" index="0"]
 
@@ -154,13 +153,13 @@ editor/display_folded = true
 position = Vector2( 168.474, 114.692 )
 scale = Vector2( 0.25, 0.5 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D7" index="0"]
 
@@ -177,13 +176,13 @@ editor/display_folded = true
 position = Vector2( 40.474, 90.692 )
 scale = Vector2( 0.75, 0.25 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D4" index="0"]
 
@@ -200,13 +199,13 @@ editor/display_folded = true
 position = Vector2( 72.474, 74.692 )
 scale = Vector2( 1.25, 0.25 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D5" index="0"]
 
@@ -223,13 +222,13 @@ editor/display_folded = true
 position = Vector2( 200.474, 90.692 )
 scale = Vector2( 1.75, 0.25 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 2
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D8" index="0"]
 
@@ -275,7 +274,7 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D10" index="0"]
 
