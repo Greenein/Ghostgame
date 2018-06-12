@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/entities/Possessable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/textures/entities/Lamp.png" type="Texture" id=2]
+[ext_resource path="res://resources/sounds/LampTurnOn.wav" type="AudioStream" id=3]
+[ext_resource path="res://resources/sounds/LampTurnOff.wav" type="AudioStream" id=4]
 
 [sub_resource type="GDScript" id=3]
 
@@ -9,6 +11,9 @@ script/source = "extends Node2D
 
 export(bool) var turned_on = false setget set_turned_on;
 var possessed = false setget ,get_possessed;
+
+onready var _snd_turn_on = $\"Sounds/TurnOn\";
+onready var _snd_turn_off = $\"Sounds/TurnOff\";
 
 func _ready():
 	$\"Possessable\".connect(\"possessed\", self, \"_possessed\");
@@ -31,6 +36,13 @@ func get_possessed():
 
 func set_turned_on(value):
 	turned_on = value;
+	
+	if _snd_turn_on != null:
+		if value:
+			_snd_turn_on.play();
+		else:
+			_snd_turn_off.play();
+	
 	_update_sprite();
 
 func _update_sprite():
@@ -43,7 +55,7 @@ func _update_sprite():
 custom_solver_bias = 0.0
 extents = Vector2( 10, 17 )
 
-[node name="Lamp" type="Node2D"]
+[node name="Lamp" type="Node2D" index="0"]
 
 script = SubResource( 3 )
 turned_on = false
@@ -66,5 +78,27 @@ texture = ExtResource( 2 )
 vframes = 2
 hframes = 2
 _sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="Sounds" type="Node2D" parent="." index="2"]
+
+[node name="TurnOn" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="TurnOff" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 

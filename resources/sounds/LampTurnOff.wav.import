@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LampTurnOff.wav-3cf0e8cb5ba187780a7b16f03db0e81b.sample"
+
+[deps]
+
+source_file="res://resources/sounds/LampTurnOff.wav"
+source_md5="e4d99e755419b89111f2b3b0096ad292"
+
+dest_files=[ "res://.import/LampTurnOff.wav-3cf0e8cb5ba187780a7b16f03db0e81b.sample" ]
+dest_md5="14df5e585e369c65a050b551a400055e"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

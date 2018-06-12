@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LampTurnOn.wav-1ba63ee1857545f8de1c995598522e7f.sample"
+
+[deps]
+
+source_file="res://resources/sounds/LampTurnOn.wav"
+source_md5="4ace03a12c1bd851119755b0b7686856"
+
+dest_files=[ "res://.import/LampTurnOn.wav-1ba63ee1857545f8de1c995598522e7f.sample" ]
+dest_md5="6bb7993bae1d15f956a148bff24995d2"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

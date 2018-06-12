@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 13, 13 )
 
-[node name="World01" type="Node2D" index="0"]
+[node name="World01" type="Node2D"]
 
 position = Vector2( 239.526, 141.308 )
 
