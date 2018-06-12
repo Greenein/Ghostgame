@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/entities/Possessable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/textures/entities/Lamp.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Node2D
+
+export(bool) var turned_on = false setget set_turned_on;
+var possessed = false setget ,get_possessed;
+
+func _ready():
+	$\"Possessable\".connect(\"possessed\", self, \"_possessed\");
+	$\"Possessable\".connect(\"unpossessed\", self, \"_unpossessed\");
+
+func _input(event):
+	if possessed and event is InputEvent and event.is_action_pressed(\"action\"):
+		set_turned_on(!turned_on);
+
+func _possessed():
+	possessed = true;
+	_update_sprite();
+
+func _unpossessed():
+	possessed = false;
+	_update_sprite();
+
+func get_possessed():
+	return possessed;
+
+func set_turned_on(value):
+	turned_on = value;
+	_update_sprite();
+
+func _update_sprite():
+	var sprite = $\"Sprite\";
+	print(sprite);
+	if sprite != null:
+		sprite.frame = int(possessed) * 2 + int(turned_on);"
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 17 )
+
+[node name="Lamp" type="Node2D" index="0"]
+
+script = SubResource( 3 )
+turned_on = false
+
+[node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
+
+editor/display_folded = true
+position = Vector2( 0, -24 )
+
+[node name="Shape" type="CollisionShape2D" parent="Possessable" index="0"]
+
+position = Vector2( 0, 8 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, -16 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+_sections_unfolded = [ "Animation", "Transform" ]
+
+

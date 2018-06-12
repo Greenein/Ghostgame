@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Area2D
+
+var _player = null;
+
+func _ready():
+	add_user_signal(\"possessed\");
+	add_user_signal(\"unpossessed\");
+	
+	connect(\"area_entered\", self, \"_area_entered\");
+	connect(\"area_exited\", self, \"_area_exited\");
+
+func _input(event):
+	if _player != null and event.is_action_pressed(\"possess\"):
+		if _player.state == _player.STATE_IDLE:
+			_player.state = _player.STATE_POSSESSING;
+			emit_signal(\"possessed\");
+		elif _player.state == _player.STATE_POSSESSING:
+			_player.state = _player.STATE_IDLE;
+			_player.global_position = global_position;
+			# Update the private position as well.
+			# TODO (Joex3): Maybe refactor into function in res://resources/entities/Ghost.tscn?
+			_player._position = _player.position;
+			emit_signal(\"unpossessed\");
+
+func _area_entered(area):
+	if area.name == \"Ghost\":
+		_player = area;
+	
+func _area_exited(area):
+	if area.name == \"Ghost\":
+		_player = null;"
+
+[node name="Possessable" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = SubResource( 1 )
+
+

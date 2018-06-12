@@ -2,21 +2,57 @@
 
 [ext_resource path="res://resources/textures/entities/Ghost.png" type="Texture" id=1]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends Area2D
 
 const DEADZONE = 0.25;
 const MOVEMENT_DEADZONE = 30;
 
+enum State {
+	STATE_IDLE,
+	STATE_POSSESSING
+}
+
 export(float) var movement_speed = 2000;
 export(float) var friction = 0.0001;
+var state = STATE_IDLE setget set_state;
 
 onready var _position = position;
 var _speed = Vector2(0, 0);
 
+# Sets the state of the player.
+func set_state(value):
+	if value == STATE_POSSESSING:
+		$\"Sprite\".visible = false;
+		# Divide by length instead of setting to Vector2(0, 0).
+		# This keeps the sign of speed (e.g. for sprite orientation).
+		_speed /= _speed.length();
+	elif value == STATE_IDLE:
+		$\"Sprite\".visible = true;
+	
+	state = value;
+
 func _ready():
 	$\"AnimationPlayer\".play(\"Idle\");
+
+func _process(delta):
+	if state == STATE_IDLE:
+		var analog = _deadzone(Vector2(Input.get_joy_axis(0, JOY_AXIS_0), Input.get_joy_axis(0, JOY_AXIS_1)));
+		if analog != Vector2(0, 0):
+			_speed += analog * movement_speed * delta;
+		else:
+			var dir = Vector2(0, 0);
+			dir.x += int(Input.is_action_pressed(\"move_right\")) - int(Input.is_action_pressed(\"move_left\"));
+			dir.y += int(Input.is_action_pressed(\"move_down\")) - int(Input.is_action_pressed(\"move_up\"));
+			_speed += dir.normalized() * movement_speed * delta;
+		
+		$\"Sprite\".flip_h = _speed.x > 0;
+		
+		_position += _limit_movement(_speed) * delta;
+		_speed *= pow(friction, delta);
+		
+		position = Vector2(round(_position.x), round(_position.y));
 
 func _limit_movement(axis):
 	if abs(axis.x) < MOVEMENT_DEADZONE:
@@ -34,26 +70,9 @@ func _deadzone(axis):
 	if length > 1:
 		return axis.normalized();
 	
-	return axis;
+	return axis;"
 
-func _process(delta):
-	var analog = _deadzone(Vector2(Input.get_joy_axis(0, JOY_AXIS_0), Input.get_joy_axis(0, JOY_AXIS_1)));
-	if analog != Vector2(0, 0):
-		_speed += analog * movement_speed * delta;
-	else:
-		var dir = Vector2(0, 0);
-		dir.x += int(Input.is_action_pressed(\"move_right\")) - int(Input.is_action_pressed(\"move_left\"));
-		dir.y += int(Input.is_action_pressed(\"move_down\")) - int(Input.is_action_pressed(\"move_up\"));
-		_speed += dir.normalized() * movement_speed * delta;
-	
-	$\"Sprite\".flip_h = _speed.x > 0;
-	
-	_position += _limit_movement(_speed) * delta;
-	_speed *= pow(friction, delta);
-	
-	position = Vector2(round(_position.x), round(_position.y));"
-
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 10.0
@@ -77,7 +96,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
 }
 
-[node name="Ghost" type="Area2D" index="0"]
+[node name="Ghost" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -86,18 +105,19 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = SubResource( 2 )
+script = SubResource( 4 )
 movement_speed = 2000
 friction = 0.0001
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
+z_index = 1
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
