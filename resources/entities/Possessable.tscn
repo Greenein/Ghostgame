@@ -7,8 +7,8 @@ script/source = "extends Area2D
 var _player = null;
 
 func _ready():
-	add_user_signal(\"possessed\");
-	add_user_signal(\"unpossessed\");
+	add_user_signal(\"possessed\", [\"player\"]);
+	add_user_signal(\"unpossessed\", [\"player\"]);
 	
 	connect(\"area_entered\", self, \"_area_entered\");
 	connect(\"area_exited\", self, \"_area_exited\");
@@ -17,18 +17,19 @@ func _input(event):
 	if _player != null and event.is_action_pressed(\"possess\"):
 		if _player.state == _player.STATE_IDLE:
 			_player.state = _player.STATE_POSSESSING;
-			emit_signal(\"possessed\");
+			emit_signal(\"possessed\", _player);
 		elif _player.state == _player.STATE_POSSESSING:
 			_player.state = _player.STATE_IDLE;
 			_player.global_position = global_position;
 			# Update the private position as well.
 			# TODO (Joex3): Maybe refactor into function in res://resources/entities/Ghost.tscn?
 			_player._position = _player.position;
-			emit_signal(\"unpossessed\");
+			emit_signal(\"unpossessed\", _player);
 
 func _area_entered(area):
 	if area.name == \"Ghost\":
-		_player = area;
+		# Player node is the parent of the area.
+		_player = area.get_parent();
 	
 func _area_exited(area):
 	if area.name == \"Ghost\":

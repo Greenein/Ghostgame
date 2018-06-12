@@ -18,11 +18,11 @@ func _input(event):
 	if possessed and event is InputEvent and event.is_action_pressed(\"action\"):
 		set_turned_on(!turned_on);
 
-func _possessed():
+func _possessed(player):
 	possessed = true;
 	_update_sprite();
 
-func _unpossessed():
+func _unpossessed(player):
 	possessed = false;
 	_update_sprite();
 
@@ -35,7 +35,6 @@ func set_turned_on(value):
 
 func _update_sprite():
 	var sprite = $\"Sprite\";
-	print(sprite);
 	if sprite != null:
 		sprite.frame = int(possessed) * 2 + int(turned_on);"
 
@@ -44,7 +43,7 @@ func _update_sprite():
 custom_solver_bias = 0.0
 extents = Vector2( 10, 17 )
 
-[node name="Lamp" type="Node2D" index="0"]
+[node name="Lamp" type="Node2D"]
 
 script = SubResource( 3 )
 turned_on = false
