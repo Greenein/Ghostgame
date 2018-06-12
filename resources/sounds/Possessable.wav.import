@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Possessable.wav-42f4d9268f83c6119ef8a25c0958f644.sample"
+
+[deps]
+
+source_file="res://resources/sounds/Possessable.wav"
+source_md5="d2006bc3b1056fd0ccba25e29a953bba"
+
+dest_files=[ "res://.import/Possessable.wav-42f4d9268f83c6119ef8a25c0958f644.sample" ]
+dest_md5="1df3aabc60da75b37d359cc92398b781"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

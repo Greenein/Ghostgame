@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/textures/entities/Ghost.png" type="Texture" id=1]
+[ext_resource path="res://resources/sounds/GhostMove.wav" type="AudioStream" id=2]
+[ext_resource path="res://resources/textures/ui/Possess.png" type="Texture" id=3]
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends KinematicBody2D
 
@@ -20,11 +22,14 @@ var state = STATE_IDLE setget set_state;
 
 onready var _position = position;
 var _speed = Vector2(0, 0);
+onready var _snd_move = $\"Sounds/Move\";
+onready var _msg_possess = $\"MSG_Possess\";
 
 # Sets the state of the player.
 func set_state(value):
 	if value == STATE_POSSESSING:
 		$\"Sprite\".visible = false;
+		_snd_move.playing = false;
 		# Divide by length instead of setting to Vector2(0, 0).
 		# This keeps the sign of speed (e.g. for sprite orientation).
 		_speed /= _speed.length();
@@ -48,6 +53,14 @@ func _process(delta):
 			_speed += dir.normalized() * movement_speed * delta;
 		
 		$\"Sprite\".flip_h = _speed.x > 0;
+		
+		if _speed.length() > 10:
+			_snd_move.volume_db = clamp(-48 + _speed.length() * 0.3, -48, 0);
+			
+			if not _snd_move.playing:
+				_snd_move.playing = true;
+		else:
+			_snd_move.playing = false;
 		
 		_position += move_and_slide(_limit_movement(_speed)) * delta;
 		_speed *= pow(friction, delta);
@@ -99,10 +112,10 @@ tracks/0/keys = {
 [node name="Ghost" type="KinematicBody2D"]
 
 input_pickable = true
-collision_layer = 1
+collision_layer = 4
 collision_mask = 1
 collision/safe_margin = 0.08
-script = SubResource( 4 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Collision" ]
 movement_speed = 1200
 friction = 0.0001
@@ -142,5 +155,31 @@ playback_speed = 1.5
 anims/Idle = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
+
+[node name="Sounds" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
+
+[node name="Move" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Effects"
+area_mask = 1
+
+[node name="MSG_Possess" type="Node2D" parent="." index="5"]
+
+visible = false
+z_index = 10
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Possess" type="Sprite" parent="MSG_Possess" index="0"]
+
+position = Vector2( 2, -17 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 
