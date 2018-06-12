@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/_solid_block.png-5285bba757d8d232212e99a425ad9487.stex"
+path="res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex"
 
 [deps]
 
-source_file="res://resources/textures/tilesets/_solid_block.png"
+source_file="res://resources/textures/tilesets/Blocks.png"
 source_md5="8da2526c9d85475abd40d1197b317c82"
 
-dest_files=[ "res://.import/_solid_block.png-5285bba757d8d232212e99a425ad9487.stex" ]
+dest_files=[ "res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex" ]
 dest_md5="2b7f70b297df85eea86b618e1b882bc4"
 
 [params]
