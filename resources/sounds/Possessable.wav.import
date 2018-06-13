@@ -7,10 +7,10 @@ path="res://.import/Possessable.wav-42f4d9268f83c6119ef8a25c0958f644.sample"
 [deps]
 
 source_file="res://resources/sounds/Possessable.wav"
-source_md5="d2006bc3b1056fd0ccba25e29a953bba"
+source_md5="f3c83e35c29cb2b3af0d30f100b3254c"
 
 dest_files=[ "res://.import/Possessable.wav-42f4d9268f83c6119ef8a25c0958f644.sample" ]
-dest_md5="1df3aabc60da75b37d359cc92398b781"
+dest_md5="c2c339fcfc880e73b1a61f52d20f46f7"
 
 [params]
 

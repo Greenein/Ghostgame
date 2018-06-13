@@ -8,7 +8,38 @@
 
 script/source = "extends Area2D
 
-var _player = null;
+# True, if possessed by the player.
+var possessed = false;
+
+# Set to the player that is possessing this object.
+var player = null;
+
+# Possess this object by the given player node.
+func possess(player):
+	if self.player != null and self.player.possessed_object != null:
+		self.player.possessed_object.unpossess();
+	
+	self.player = player;
+	player.state = player.STATE_POSSESSING;
+	player.possessed_object = self;
+	possessed = true;
+	_center_player_pos(player);
+	$\"Sounds/Possess\".play();
+	emit_signal(\"possessed\", player);
+
+# Unpossesses this object.
+func unpossess():
+	# Object must be possessed
+	assert(possessed and player != null);
+	
+	player.state = player.STATE_IDLE;
+	player.possessed_object = null;
+	possessed = false;
+	_center_player_pos(player);
+	player._msg_possess.visible = true;
+	$\"Sounds/Possess\".stop();
+	$\"Sounds/Unpossess\".play();
+	emit_signal(\"unpossessed\", player);
 
 func _ready():
 	add_user_signal(\"possessed\", [\"player\"]);
@@ -17,36 +48,33 @@ func _ready():
 	connect(\"area_entered\", self, \"_area_entered\");
 	connect(\"area_exited\", self, \"_area_exited\");
 
-func _input(event):
-	if _player != null and event.is_action_pressed(\"possess\"):
-		if _player.state == _player.STATE_IDLE:
-			_player.state = _player.STATE_POSSESSING;
-			_player._msg_possess.visible = false;
-			$\"Sounds/Possess\".play();
-			emit_signal(\"possessed\", _player);
-		elif _player.state == _player.STATE_POSSESSING:
-			_player.state = _player.STATE_IDLE;
-			_player.global_position = global_position;
-			# Update the private position as well.
-			# TODO (Joex3): Maybe refactor into function in res://resources/entities/Ghost.tscn?
-			_player._position = _player.position;
-			_player._msg_possess.visible = true;
-			$\"Sounds/Unpossess\".play();
-			emit_signal(\"unpossessed\", _player);
+func _center_player_pos(player):
+	player.global_position = global_position;
+	# Update the private position as well.
+	# TODO (Joex3): Maybe refactor into function in res://resources/entities/Ghost.tscn?
+	player._position = player.position;
 
 func _area_entered(area):
 	if area.name == \"Ghost\":
 		# Player node is the parent of the area.
-		_player = area.get_parent();
-		$\"Sounds/Possessable\".play();
-		_player._msg_possess.visible = true;
+		var player = area.get_parent();
+		player._possessables_in_range.push_back(self);
+		
+		if player._possessables_in_range.size() == 1:
+			$\"Sounds/Possessable\".play();
+			player._msg_possess.visible = true;
 	
 func _area_exited(area):
 	if area.name == \"Ghost\":
-		_player._msg_possess.visible = false;
-		_player = null;"
+		# Player node is the parent of the area.
+		var player = area.get_parent();
+		player._possessables_in_range.erase(self);
+		
+		if player._possessables_in_range.size() == 0:
+			player._msg_possess.visible = false;
+			player = null;"
 
-[node name="Possessable" type="Area2D" index="0"]
+[node name="Possessable" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -82,7 +110,7 @@ area_mask = 1
 [node name="Possessable" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 
 stream = ExtResource( 3 )
-volume_db = 0.0
+volume_db = -3.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

@@ -8,7 +8,11 @@
 
 script/source = "extends KinematicBody2D
 
+# Deadzone of controller axis.
 const DEADZONE = 0.25;
+
+# Deadzone for the movement in pixels per second.
+# Movements with a length smaller than this value will be ignored.
 const MOVEMENT_DEADZONE = 30;
 
 enum State {
@@ -16,12 +20,29 @@ enum State {
 	STATE_POSSESSING
 }
 
+# Movement speed in pixels per second.
 export(float) var movement_speed = 1200;
+
+# Friction of the movement.
+# The player's speed will be multiplied by this value in the span of one second.
 export(float) var friction = 0.0001;
+
+# The state of the player.
 var state = STATE_IDLE setget set_state;
 
+# Set to the possessed object.
+var possessed_object = null;
+
+# Private position used to calculate movement.
+# The actual position property will be set to a rounded version of this variable.
 onready var _position = position;
+
+# Private speed used to calculate movement.
 var _speed = Vector2(0, 0);
+
+# Array of possessables that are currently in range to be possessed.
+var _possessables_in_range = Array();
+
 onready var _snd_move = $\"Sounds/Move\";
 onready var _msg_possess = $\"MSG_Possess\";
 
@@ -30,6 +51,7 @@ func set_state(value):
 	if value == STATE_POSSESSING:
 		$\"Sprite\".visible = false;
 		_snd_move.playing = false;
+		_msg_possess.visible = false;
 		# Divide by length instead of setting to Vector2(0, 0).
 		# This keeps the sign of speed (e.g. for sprite orientation).
 		_speed /= _speed.length();
@@ -40,6 +62,13 @@ func set_state(value):
 
 func _ready():
 	$\"AnimationPlayer\".play(\"Idle\");
+
+func _input(event):
+	if event.is_action_pressed(\"possess\"):
+		if _possessables_in_range.size() != 0 and state == STATE_IDLE:
+			_possessables_in_range[0].possess(self);
+		elif possessed_object != null and state == STATE_POSSESSING:
+			possessed_object.unpossess();
 
 func _process(delta):
 	if state == STATE_IDLE:
@@ -55,7 +84,7 @@ func _process(delta):
 		$\"Sprite\".flip_h = _speed.x > 0;
 		
 		if _speed.length() > 10:
-			_snd_move.volume_db = clamp(-48 + _speed.length() * 0.3, -48, 0);
+			_snd_move.volume_db = clamp(-48 + _speed.length() * 0.2, -48, 0);
 			
 			if not _snd_move.playing:
 				_snd_move.playing = true;
@@ -109,7 +138,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
 }
 
-[node name="Ghost" type="KinematicBody2D"]
+[node name="Ghost" type="KinematicBody2D" index="0"]
 
 input_pickable = true
 collision_layer = 4
@@ -172,6 +201,7 @@ area_mask = 1
 
 [node name="MSG_Possess" type="Node2D" parent="." index="5"]
 
+editor/display_folded = true
 visible = false
 z_index = 10
 _sections_unfolded = [ "Z Index" ]

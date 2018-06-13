@@ -7,10 +7,10 @@ path="res://.import/Possess.wav-453adb6f34569960948f18e323207ac4.sample"
 [deps]
 
 source_file="res://resources/sounds/Possess.wav"
-source_md5="2157e3e674ca51f09b96154e68d94ea5"
+source_md5="a97f205cbd209a57e0b3d644aa34a28f"
 
 dest_files=[ "res://.import/Possess.wav-453adb6f34569960948f18e323207ac4.sample" ]
-dest_md5="74d8c76618900bf5b76dc6378f132c7c"
+dest_md5="5a9b5c1635a3ca89756008f42bb9b525"
 
 [params]
 

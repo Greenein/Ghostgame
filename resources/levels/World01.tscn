@@ -56,7 +56,17 @@ position = Vector2( 160.474, 82.692 )
 
 position = Vector2( -151.526, 34.692 )
 
-[node name="Collision" type="Node2D" parent="." index="4"]
+[node name="Lamp3" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 48.474, 66.692 )
+
+[node name="Lamp4" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 72.474, 66.692 )
+
+[node name="Collision" type="Node2D" parent="." index="6"]
+
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collision" index="0"]
 
