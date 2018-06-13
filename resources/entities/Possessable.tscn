@@ -60,7 +60,7 @@ func _area_entered(area):
 		var player = area.get_parent();
 		player._possessables_in_range.push_back(self);
 		
-		if player._possessables_in_range.size() == 1:
+		if player._possessables_in_range.size() == 1 and not player.state == player.STATE_POSSESSING:
 			$\"Sounds/Possessable\".play();
 			player._msg_possess.visible = true;
 	
