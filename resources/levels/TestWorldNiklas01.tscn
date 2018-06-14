@@ -17,6 +17,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="SolidCollision" type="Node2D" parent="CollisionBlock" index="0"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -51,6 +52,7 @@ collision_mask = 1
 
 [node name="Collision" type="Node2D" parent="CollisionBlock" index="1"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -60,78 +62,84 @@ __meta__ = {
 position = Vector2( 256, 8 )
 scale = Vector2( 8, 0.25 )
 
-[node name="StaticBody2D2" parent="CollisionBlock/Collision" index="1" instance=ExtResource( 2 )]
+[node name="StaticBody2D16" parent="CollisionBlock/Collision" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 504, 144 )
+scale = Vector2( 0.25, 4 )
+
+[node name="StaticBody2D2" parent="CollisionBlock/Collision" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 256, 280 )
 scale = Vector2( 8, 0.25 )
 
-[node name="StaticBody2D3" parent="CollisionBlock/Collision" index="2" instance=ExtResource( 2 )]
+[node name="StaticBody2D3" parent="CollisionBlock/Collision" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 104, 24 )
 scale = Vector2( 3.25, 0.25 )
 
-[node name="StaticBody2D4" parent="CollisionBlock/Collision" index="3" instance=ExtResource( 2 )]
+[node name="StaticBody2D4" parent="CollisionBlock/Collision" index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 88, 40 )
 scale = Vector2( 2.75, 0.25 )
 
-[node name="StaticBody2D5" parent="CollisionBlock/Collision" index="4" instance=ExtResource( 2 )]
+[node name="StaticBody2D5" parent="CollisionBlock/Collision" index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 64, 56 )
 scale = Vector2( 2, 0.25 )
 
-[node name="StaticBody2D6" parent="CollisionBlock/Collision" index="5" instance=ExtResource( 2 )]
+[node name="StaticBody2D6" parent="CollisionBlock/Collision" index="6" instance=ExtResource( 2 )]
 
 position = Vector2( 56, 72 )
 scale = Vector2( 1.75, 0.25 )
 
-[node name="StaticBody2D7" parent="CollisionBlock/Collision" index="6" instance=ExtResource( 2 )]
+[node name="StaticBody2D7" parent="CollisionBlock/Collision" index="7" instance=ExtResource( 2 )]
 
 position = Vector2( 48, 88 )
 scale = Vector2( 1.5, 0.25 )
 
-[node name="StaticBody2D8" parent="CollisionBlock/Collision" index="7" instance=ExtResource( 2 )]
+[node name="StaticBody2D8" parent="CollisionBlock/Collision" index="8" instance=ExtResource( 2 )]
 
 position = Vector2( 24, 104 )
 scale = Vector2( 0.75, 0.25 )
 
-[node name="StaticBody2D9" parent="CollisionBlock/Collision" index="8" instance=ExtResource( 2 )]
+[node name="StaticBody2D9" parent="CollisionBlock/Collision" index="9" instance=ExtResource( 2 )]
 
 position = Vector2( 8, 144 )
 scale = Vector2( 0.25, 1 )
 
-[node name="StaticBody2D10" parent="CollisionBlock/Collision" index="9" instance=ExtResource( 2 )]
+[node name="StaticBody2D10" parent="CollisionBlock/Collision" index="10" instance=ExtResource( 2 )]
 
 position = Vector2( 104, 224 )
 scale = Vector2( 3.25, 1.5 )
 
-[node name="StaticBody2D14" parent="CollisionBlock/Collision" index="10" instance=ExtResource( 2 )]
+[node name="StaticBody2D14" parent="CollisionBlock/Collision" index="11" instance=ExtResource( 2 )]
 
 position = Vector2( 256, 256 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="StaticBody2D15" parent="CollisionBlock/Collision" index="11" instance=ExtResource( 2 )]
+[node name="StaticBody2D15" parent="CollisionBlock/Collision" index="12" instance=ExtResource( 2 )]
 
 position = Vector2( 336, 240 )
 scale = Vector2( 0.5, 1 )
 
-[node name="StaticBody2D11" parent="CollisionBlock/Collision" index="12" instance=ExtResource( 2 )]
+[node name="StaticBody2D11" parent="CollisionBlock/Collision" index="13" instance=ExtResource( 2 )]
 
 position = Vector2( 160, 152 )
 scale = Vector2( 1.5, 0.75 )
 
-[node name="StaticBody2D12" parent="CollisionBlock/Collision" index="13" instance=ExtResource( 2 )]
+[node name="StaticBody2D12" parent="CollisionBlock/Collision" index="14" instance=ExtResource( 2 )]
 
 position = Vector2( 96, 160 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="StaticBody2D13" parent="CollisionBlock/Collision" index="14" instance=ExtResource( 2 )]
+[node name="StaticBody2D13" parent="CollisionBlock/Collision" index="15" instance=ExtResource( 2 )]
 
 position = Vector2( 64, 168 )
 scale = Vector2( 0.5, 0.25 )
 
 [node name="Crates" type="Node2D" parent="." index="2"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -185,6 +193,7 @@ __meta__ = {
 
 [node name="Player" type="Node2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 112, 256 )
 
 [node name="Ghost" parent="Player" index="0" instance=ExtResource( 4 )]
