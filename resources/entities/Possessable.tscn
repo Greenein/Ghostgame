@@ -23,32 +23,39 @@ var _editor_hint_msg_possess_time = 0.0;
 
 # Possess this object by the given player node.
 func possess(player):
-	if self.player != null and self.player.possessed_object != null:
-		self.player.possessed_object.unpossess();
 	
-	self.player = player;
-	player.state = player.STATE_POSSESSING;
-	player.possessed_object = self;
-	possessed = true;
-	_center_player_pos(player);
-	$\"Sounds/Possess\".play();
-	$\"MSG_Possess\".hide();
-	emit_signal(\"possessed\", player);
+	if  !Engine.editor_hint:
+		
+		if self.player != null and self.player.possessed_object != null:
+				self.player.possessed_object.unpossess();
+		
+		self.player = player;
+		player.state = player.STATE_POSSESSING;
+		player.possessed_object = self;
+		possessed = true;
+		_center_player_pos(player);
+		$\"Sounds/Possess\".play();
+		$\"MSG_Possess\".hide();
+		emit_signal(\"possessed\", player);
 
 # Unpossesses this object.
 func unpossess():
-	# Object must be possessed
-	assert(possessed and player != null);
 	
-	player.possessed_object = null;
-	possessed = false;
-	_center_player_pos(player);
-	$\"Sounds/Possess\".stop();
-	$\"Sounds/Unpossess\".play();
-	$\"MSG_Possess\".show();
-	emit_signal(\"unpossessed\", player);
+	if  !Engine.editor_hint:
 	
-	player.state = player.STATE_IDLE;
+		# Object must be possessed
+		assert(possessed and player != null);
+		
+		player.possessed_object = null;
+		possessed = false;
+		_center_player_pos(player);
+		$\"Sounds/Possess\".stop();
+		$\"Sounds/Unpossess\".play();
+		if player._possessables_in_range.size() > 0:
+	        player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
+		emit_signal(\"unpossessed\", player);
+		
+		player.state = player.STATE_IDLE;
 
 func set_msg_possess_offset(value):
 	_msg_possess_offset = value;
@@ -84,7 +91,7 @@ func _center_player_pos(player):
 	player._position = player.position;
 
 func _area_entered(area):
-	if area.name == \"GhostArea\":
+	if area.name == \"GhostArea\" and !Engine.editor_hint:
 		# Player node is the parent of the area.
 		var player = area.get_parent();
 		player._possessables_in_range.push_back(self);
@@ -97,7 +104,7 @@ func _area_entered(area):
 				player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
 	
 func _area_exited(area):
-	if area.name == \"GhostArea\":
+	if area.name == \"GhostArea\" and !Engine.editor_hint:
 		# Player node is the parent of the area.
 		var player = area.get_parent();
 		player._possessables_in_range.erase(self);
@@ -118,7 +125,7 @@ func _process(delta):
 			$\"MSG_Possess\".hide();
 			set_process(false);"
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Node2D
 
@@ -153,7 +160,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[node name="Possessable" type="Area2D" index="0"]
+[node name="Possessable" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -201,8 +208,9 @@ area_mask = 1
 
 [node name="MSG_Possess" type="Node2D" parent="." index="1"]
 
+visible = false
 z_index = 10
-script = SubResource( 5 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Possess" type="Sprite" parent="MSG_Possess" index="0"]

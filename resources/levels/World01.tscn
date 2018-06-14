@@ -1,25 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://resources/tilemaps/TileMapBlocks.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/entities/Ghost.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/entities/Lamp.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/entities/Crate.tscn" type="PackedScene" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 13, 13 )
+[ext_resource path="res://resources/scripts/World01.gd" type="Script" id=1]
+[ext_resource path="res://resources/tilemaps/TileMapBlocks.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/entities/Ghost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/entities/Lamp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/entities/Crate.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/tilemaps/StaticBody2D.tscn" type="PackedScene" id=6]
 
 [node name="World01" type="Node2D" index="0"]
 
 position = Vector2( 239.526, 141.308 )
+script = ExtResource( 1 )
 
-[node name="TileMap" parent="." index="0" instance=ExtResource( 1 )]
+[node name="TileMap" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 0.459656, 2.6893 )
 tile_data = PoolIntArray( -524303, 10, 0, -524302, 14, 0, -524301, 14, 0, -524300, 14, 0, -524299, 14, 0, -524298, 14, 0, -524297, 14, 0, -524296, 14, 0, -524295, 14, 0, -524294, 14, 0, -524293, 14, 0, -524292, 14, 0, -524291, 14, 0, -524290, 14, 0, -524289, 14, 0, -589824, 14, 0, -589823, 14, 0, -589822, 14, 0, -589821, 14, 0, -589820, 14, 0, -589819, 14, 0, -589818, 14, 0, -589817, 14, 0, -589816, 14, 0, -589815, 14, 0, -589814, 14, 0, -589813, 14, 0, -589812, 14, 0, -589811, 14, 0, -589810, 14, 0, -589809, 14, 0, -589808, 10, 0, -458767, 11, 0, -458753, 41, 0, -524288, 42, 0, -524287, 42, 0, -524286, 43, 0, -524272, 9, 0, -393231, 11, 0, -393217, 41, 0, -458752, 42, 0, -458751, 42, 0, -458750, 43, 0, -458736, 9, 0, -327695, 11, 0, -327681, 41, 0, -393216, 42, 0, -393215, 42, 0, -393214, 43, 0, -393200, 9, 0, -262159, 11, 0, -262158, 18, 0, -262157, 18, 0, -262156, 19, 0, -262152, 17, 0, -262151, 18, 0, -262150, 18, 0, -262149, 18, 0, -262148, 18, 0, -262147, 18, 0, -262146, 18, 0, -262145, 41, 0, -327680, 42, 0, -327679, 42, 0, -327678, 43, 0, -327664, 9, 0, -196623, 11, 0, -196609, 45, 0, -262144, 46, 0, -262143, 46, 0, -262142, 46, 0, -262141, 34, 0, -262140, 34, 0, -262139, 34, 0, -262138, 35, 0, -262135, 33, 0, -262134, 34, 0, -262133, 34, 0, -262132, 34, 0, -262131, 34, 0, -262130, 34, 0, -262129, 34, 0, -262128, 9, 0, -131087, 11, 0, -196592, 9, 0, -65551, 11, 0, -131056, 9, 0, -15, 11, 0, -65520, 9, 0, 65521, 11, 0, 16, 9, 0, 131057, 11, 0, 65552, 9, 0, 196593, 11, 0, 196597, 21, 0, 196598, 22, 0, 196599, 22, 0, 196600, 23, 0, 131088, 9, 0, 262129, 11, 0, 262133, 25, 0, 262134, 26, 0, 262135, 26, 0, 262136, 27, 0, 196624, 9, 0, 327665, 11, 0, 327669, 25, 0, 327670, 26, 0, 327671, 26, 0, 327672, 27, 0, 262144, 52, 0, 262160, 9, 0, 393201, 11, 0, 393205, 25, 0, 393206, 26, 0, 393207, 26, 0, 393208, 27, 0, 327680, 57, 0, 327681, 50, 0, 327682, 50, 0, 327683, 50, 0, 327684, 50, 0, 327685, 55, 0, 327689, 33, 0, 327690, 34, 0, 327691, 34, 0, 327692, 34, 0, 327693, 34, 0, 327694, 34, 0, 327695, 34, 0, 327696, 9, 0, 458737, 11, 0, 458741, 25, 0, 458742, 26, 0, 458743, 26, 0, 458744, 27, 0, 393216, 56, 0, 393221, 56, 0, 393226, 40, 0, 393232, 9, 0, 524273, 11, 0, 524277, 25, 0, 524278, 26, 0, 524279, 26, 0, 524280, 27, 0, 524287, 53, 0, 458752, 59, 0, 458753, 6, 0, 458754, 6, 0, 458755, 6, 0, 458756, 6, 0, 458757, 6, 0, 458758, 6, 0, 458759, 6, 0, 458760, 6, 0, 458761, 6, 0, 458762, 6, 0, 458763, 6, 0, 458764, 6, 0, 458765, 6, 0, 458766, 6, 0, 458767, 6, 0, 458768, 10, 0, 589809, 10, 0, 589810, 6, 0, 589811, 6, 0, 589812, 6, 0, 589813, 6, 0, 589814, 6, 0, 589815, 6, 0, 589816, 6, 0, 589817, 6, 0, 589818, 6, 0, 589819, 6, 0, 589820, 6, 0, 589821, 6, 0, 589822, 6, 0, 589823, 6, 0, 524288, 6, 0, 524289, 10, 0, 524290, 10, 0, 524291, 10, 0, 524292, 10, 0, 524293, 10, 0, 524294, 10, 0, 524295, 10, 0, 524296, 10, 0, 524297, 10, 0, 524298, 10, 0, 524299, 10, 0, 524300, 10, 0, 524301, 10, 0, 524302, 10, 0, 524303, 10, 0, 524304, 10, 0 )
 
-[node name="Ghost" parent="." index="1" instance=ExtResource( 2 )]
+[node name="Ghost" parent="." index="1" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 _sections_unfolded = [ "Collision", "Transform" ]
@@ -54,19 +52,19 @@ _sections_unfolded = [ "Drag Margin", "Limit" ]
 
 editor/display_folded = true
 
-[node name="Lamp" parent="Lamps" index="0" instance=ExtResource( 3 )]
+[node name="Lamp" parent="Lamps" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 160.474, 82.692 )
 
-[node name="Lamp2" parent="Lamps" index="1" instance=ExtResource( 3 )]
+[node name="Lamp2" parent="Lamps" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 64.474, -61.308 )
 
-[node name="Lamp3" parent="Lamps" index="2" instance=ExtResource( 3 )]
+[node name="Lamp3" parent="Lamps" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 40.474, 82.692 )
 
-[node name="Lamp4" parent="Lamps" index="3" instance=ExtResource( 3 )]
+[node name="Lamp4" parent="Lamps" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 64.474, 82.692 )
 
@@ -74,415 +72,137 @@ position = Vector2( 64.474, 82.692 )
 
 editor/display_folded = true
 
-[node name="Crate" parent="Crates" index="0" instance=ExtResource( 4 )]
+[node name="Crate" parent="Crates" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 224.474, 66.692 )
 
-[node name="Crate2" parent="Crates" index="1" instance=ExtResource( 4 )]
+[node name="Crate2" parent="Crates" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( -151.526, 18.692 )
 
-[node name="Crate3" parent="Crates" index="2" instance=ExtResource( 4 )]
+[node name="Crate3" parent="Crates" index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 208.474, -77.308 )
 
-[node name="Crate4" parent="Crates" index="3" instance=ExtResource( 4 )]
+[node name="Crate4" parent="Crates" index="3" instance=ExtResource( 5 )]
 
-position = Vector2( -55.526, -93.308 )
+position = Vector2( -63.526, -93.308 )
 
 [node name="Collision" type="Node2D" parent="." index="4"]
 
 editor/display_folded = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Collision" index="0"]
+[node name="StaticBody2D01" parent="Collision" index="0" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( -143.526, 82.692 )
-scale = Vector2( 1, 1.5 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Collision" index="1"]
-
-editor/display_folded = true
-position = Vector2( -7.526, 122.692 )
-scale = Vector2( 0.25, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D2" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Collision" index="2"]
-
-editor/display_folded = true
-position = Vector2( 8.474, 98.692 )
-scale = Vector2( 0.25, 1 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D3" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="Collision" index="3"]
-
-editor/display_folded = true
-position = Vector2( 88.474, 106.692 )
-scale = Vector2( 0.25, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D6" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="Collision" index="4"]
-
-editor/display_folded = true
-position = Vector2( 168.474, 106.692 )
-scale = Vector2( 0.25, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D7" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Collision" index="5"]
-
-editor/display_folded = true
-position = Vector2( 56.474, 90.692 )
-scale = Vector2( 1.25, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D4" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D8" type="StaticBody2D" parent="Collision" index="6"]
-
-editor/display_folded = true
 position = Vector2( 200.474, 90.692 )
 scale = Vector2( 1.75, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D8" index="0"]
+[node name="StaticBody2D02" parent="Collision" index="1" instance=ExtResource( 6 )]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 120.474, 122.692 )
+scale = Vector2( 4.25, 0.25 )
 
-[node name="StaticBody2D13" type="StaticBody2D" parent="Collision" index="7"]
+[node name="StaticBody2D03" parent="Collision" index="2" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( 200.474, -53.308 )
-scale = Vector2( 1.75, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
+position = Vector2( 56.474, 90.692 )
+scale = Vector2( 1.25, 0.25 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D13" index="0"]
+[node name="StaticBody2D04" parent="Collision" index="3" instance=ExtResource( 6 )]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D14" type="StaticBody2D" parent="Collision" index="8"]
-
-editor/display_folded = true
 position = Vector2( 80.474, -53.308 )
 scale = Vector2( 1, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D14" index="0"]
+[node name="StaticBody2D05" parent="Collision" index="4" instance=ExtResource( 6 )]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 200.474, -53.308 )
+scale = Vector2( 1.75, 0.25 )
 
-[node name="StaticBody2D15" type="StaticBody2D" parent="Collision" index="9"]
+[node name="StaticBody2D06" parent="Collision" index="5" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( 16.474, -85.308 )
 scale = Vector2( 1, 1.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D15" index="0"]
+[node name="StaticBody2D07" parent="Collision" index="6" instance=ExtResource( 6 )]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( -143.526, 82.692 )
+scale = Vector2( 1, 1.5 )
 
-[node name="StaticBody2D17" type="StaticBody2D" parent="Collision" index="10"]
+[node name="StaticBody2D08" parent="Collision" index="7" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( -71.526, -69.308 )
-scale = Vector2( 1.75, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D17" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D18" type="StaticBody2D" parent="Collision" index="11"]
-
-editor/display_folded = true
 position = Vector2( -199.526, -69.308 )
 scale = Vector2( 0.75, 0.25 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 2
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D18" index="0"]
+[node name="StaticBody2D12" parent="Collision" index="8" instance=ExtResource( 6 )]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( -71.526, -69.308 )
+scale = Vector2( 1.75, 0.25 )
 
-[node name="StaticBody2D9" type="StaticBody2D" parent="Collision" index="12"]
+[node name="StaticBody2D09" parent="Collision" index="9" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( 8.474, 138.692 )
-scale = Vector2( 7.75, 0.25 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D9" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D16" type="StaticBody2D" parent="Collision" index="13"]
-
-editor/display_folded = true
-position = Vector2( 136.474, 122.692 )
-scale = Vector2( 3.75, 0.25 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D16" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D10" type="StaticBody2D" parent="Collision" index="14"]
-
-editor/display_folded = true
-position = Vector2( 16.474, -133.308 )
-scale = Vector2( 8, 0.25 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D10" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D11" type="StaticBody2D" parent="Collision" index="15"]
-
-editor/display_folded = true
 position = Vector2( -231.526, 2.692 )
 scale = Vector2( 0.25, 4 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D11" index="0"]
+[node name="StaticBody2D11" parent="Collision" index="10" instance=ExtResource( 6 )]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 264.474, 2.692 )
+scale = Vector2( 0.25, 4 )
 
-[node name="StaticBody2D12" type="StaticBody2D" parent="Collision" index="16"]
+[node name="StaticBody2D10" parent="Collision" index="11" instance=ExtResource( 6 )]
+
+position = Vector2( 16.474, -133.308 )
+scale = Vector2( 8, 0.25 )
+
+[node name="StaticBody2D13" parent="Collision" index="12" instance=ExtResource( 6 )]
+
+position = Vector2( 16.474, 138.692 )
+scale = Vector2( 8, 0.25 )
+
+[node name="StaticBody2D14" parent="Collision" index="13" instance=ExtResource( 6 )]
+
+position = Vector2( 168.474, 106.692 )
+
+[node name="StaticBody2D15" parent="Collision" index="14" instance=ExtResource( 6 )]
+
+position = Vector2( 88.474, 106.692 )
+
+[node name="StaticBody2D16" parent="Collision" index="15" instance=ExtResource( 6 )]
+
+position = Vector2( 8.474, 90.692 )
+scale = Vector2( 0.25, 0.75 )
+
+[node name="SolidCollision" type="Node2D" parent="." index="5"]
 
 editor/display_folded = true
-position = Vector2( 264.474, 10.692 )
-scale = Vector2( 0.25, 4.25 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D12" index="0"]
-
-position = Vector2( -4.76837e-06, 4.76837e-06 )
-scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="StaticBody2DSolid01" parent="SolidCollision" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 16.474, -149.308 )
+scale = Vector2( 8.5, 0.25 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="StaticBody2DSolid02" parent="SolidCollision" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 16.474, 154.692 )
+scale = Vector2( 8.5, 0.25 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="StaticBody2DSolid03" parent="SolidCollision" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( -247.526, 2.692 )
+scale = Vector2( 0.25, 4.5 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="StaticBody2DSolid04" parent="SolidCollision" index="3" instance=ExtResource( 6 )]
+
+position = Vector2( 280.474, 2.692 )
+scale = Vector2( 0.25, 4.5 )
+collision_layer = 1
+collision_mask = 1
 
 

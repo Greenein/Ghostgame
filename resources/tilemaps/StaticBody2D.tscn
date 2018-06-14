@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+position = Vector2( 2.38419e-07, 2.38419e-07 )
+scale = Vector2( 0.25, 0.25 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0, 1.90735e-06 )
+scale = Vector2( 3.2, 3.2 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+
