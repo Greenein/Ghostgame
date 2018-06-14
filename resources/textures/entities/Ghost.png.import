@@ -7,10 +7,7 @@ path="res://.import/Ghost.png-6059c65f1780e6097c9a9ccee3b0e537.stex"
 [deps]
 
 source_file="res://resources/textures/entities/Ghost.png"
-source_md5="082879f20494763bd3731703e1b8c819"
-
 dest_files=[ "res://.import/Ghost.png-6059c65f1780e6097c9a9ccee3b0e537.stex" ]
-dest_md5="149082096e6227c51701c176c49b6eb8"
 
 [params]
 
