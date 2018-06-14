@@ -9,7 +9,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -16, -14, -14, -16, 14, -16, 16, -14, 16, 14, 14, 16, -14, 16, -16, 14 )
+points = PoolVector2Array( -16, -15.5, -15.5, -16, 15.5, -16, 16, -15.5, 16, 15.5, 15.5, 16, -15.5, 16, -16, 15.5 )
 
 [sub_resource type="GDScript" id=2]
 
@@ -50,6 +50,8 @@ func unpossessed(player):
 	volume_db = -60;"
 
 [node name="Crate" instance=ExtResource( 1 )]
+
+_sections_unfolded = [ "Collision", "collision" ]
 
 [node name="Possessable" parent="." index="0"]
 

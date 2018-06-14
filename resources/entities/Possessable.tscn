@@ -32,7 +32,7 @@ func possess(player):
 	possessed = true;
 	_center_player_pos(player);
 	$\"Sounds/Possess\".play();
-	$\"MSG_Possess\".visible = false;
+	$\"MSG_Possess\".hide();
 	emit_signal(\"possessed\", player);
 
 # Unpossesses this object.
@@ -45,6 +45,7 @@ func unpossess():
 	_center_player_pos(player);
 	$\"Sounds/Possess\".stop();
 	$\"Sounds/Unpossess\".play();
+	$\"MSG_Possess\".show();
 	emit_signal(\"unpossessed\", player);
 	
 	player.state = player.STATE_IDLE;
@@ -54,7 +55,7 @@ func set_msg_possess_offset(value):
 	
 	if get_tree() != null:
 		if Engine.editor_hint:
-			$\"MSG_Possess\".visible = true;
+			$\"MSG_Possess\".show();
 			_editor_hint_msg_possess_time = 1;
 			set_process(true);
 		
@@ -70,7 +71,7 @@ func _ready():
 	connect(\"area_entered\", self, \"_area_entered\");
 	connect(\"area_exited\", self, \"_area_exited\");
 	
-	$\"MSG_Possess\".visible = false;
+	$\"MSG_Possess\".hide();
 	set_process(false);
 	
 	# Apply msg_possess_offset (since its setter will be executed before the node is ready).
@@ -93,7 +94,7 @@ func _area_entered(area):
 				$\"Sounds/Possessable\".play();
 				
 			if not player.state == player.STATE_POSSESSING and player._possessables_in_range.size() > 0:
-				player._possessables_in_range[0].get_node(\"MSG_Possess\").visible = true;
+				player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
 	
 func _area_exited(area):
 	if area.name == \"GhostArea\":
@@ -102,10 +103,10 @@ func _area_exited(area):
 		player._possessables_in_range.erase(self);
 		
 		if not player.state == player.STATE_POSSESSING:
-			$\"MSG_Possess\".visible = false;
-				
+			$\"MSG_Possess\".hide();
+			
 			if player._possessables_in_range.size() > 0:
-				player._possessables_in_range[0].get_node(\"MSG_Possess\").visible = true;
+				player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
 			
 			if player._possessables_in_range.size() == 0:
 				player = null;
@@ -114,12 +115,28 @@ func _process(delta):
 	if Engine.editor_hint:
 		_editor_hint_msg_possess_time -= delta;
 		if _editor_hint_msg_possess_time <= 0:
-			$\"MSG_Possess\".visible = false;
+			$\"MSG_Possess\".hide();
 			set_process(false);"
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="GDScript" id=5]
 
-resource_name = "Idle"
+script/source = "extends Node2D
+
+func ready():
+	hide();
+	
+func show():
+	visible = true;
+	var anim = $\"Possess/AnimationPlayer\";
+	anim.play(\"Idle\");
+
+func hide():
+	visible = false;
+	var anim = $\"Possess/AnimationPlayer\";
+	anim.play(\"Idle\");"
+
+[sub_resource type="Animation" id=3]
+
 length = 1.0
 loop = true
 step = 0.1
@@ -136,14 +153,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="GDScript" id=3]
-
-script/source = "extends AnimationPlayer
-
-func _ready():
-	play(\"Idle\");"
-
-[node name="Possessable" type="Area2D"]
+[node name="Possessable" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -191,15 +201,16 @@ area_mask = 1
 
 [node name="MSG_Possess" type="Node2D" parent="." index="1"]
 
-visible = false
 z_index = 10
+script = SubResource( 5 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Possess" type="Sprite" parent="MSG_Possess" index="0"]
 
 texture = ExtResource( 4 )
 vframes = 2
-_sections_unfolded = [ "Transform" ]
+frame = 1
+_sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MSG_Possess/Possess" index="0"]
 
@@ -208,9 +219,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Idle = SubResource( 2 )
+anims/Idle = SubResource( 3 )
 blend_times = [  ]
-script = SubResource( 3 )
 _sections_unfolded = [ "Playback Options" ]
 
 

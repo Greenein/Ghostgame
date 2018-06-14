@@ -30,10 +30,12 @@ onready var _p = $\"Possessable\";
 # The actual position property will be set to a rounded version of this variable.
 onready var _position = position;
 
-# Snaps the position to the given grid.
-func snap_position(grid = Vector2(16, 16)):
-	var pos = global_position;
-	global_position = Vector2(round(pos.x / grid.x) * grid.x, round(pos.y / grid.y) * grid.y);
+# Snapes the position.
+func snap_falling_position():
+	var gpos = global_position;
+	gpos.x += sign(speed.x) * 0.01;
+	global_position = gpos;
+	speed.x = 0;
 
 func _ready():
 	add_user_signal(\"impact\", [\"amount\"]);
@@ -65,14 +67,13 @@ func _process(delta):
 	else:
 		if $\"Possessable\".possessed:
 			if on_ground:
-				speed.x = 0;
-				snap_position();
+				snap_falling_position();
 		
 		var snd_falling = $\"Sounds/Falling\";
 		if not snd_falling.is_playing():
 			snd_falling.play();
+			
 		snd_falling.volume_db = clamp(-60 + speed.length() * 6, -60, -24);
-		
 		speed += gravity * delta;
 	
 	on_ground = on_ground_new;
