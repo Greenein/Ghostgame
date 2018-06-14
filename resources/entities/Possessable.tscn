@@ -35,8 +35,9 @@ func possess(player):
 		possessed = true;
 		_center_player_pos(player);
 		$\"Sounds/Possess\".play();
-		$\"MSG_Possess\".hide();
 		emit_signal(\"possessed\", player);
+	
+	$\"MSG_Possess\".hide();
 
 # Unpossesses this object.
 func unpossess():
@@ -51,11 +52,11 @@ func unpossess():
 		_center_player_pos(player);
 		$\"Sounds/Possess\".stop();
 		$\"Sounds/Unpossess\".play();
-		if player._possessables_in_range.size() > 0:
-	        player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
 		emit_signal(\"unpossessed\", player);
 		
 		player.state = player.STATE_IDLE;
+	
+	$\"MSG_Possess\".hide();
 
 func set_msg_possess_offset(value):
 	_msg_possess_offset = value;
@@ -100,8 +101,7 @@ func _area_entered(area):
 			if player._possessables_in_range.size() == 1 and not player.state == player.STATE_POSSESSING:
 				$\"Sounds/Possessable\".play();
 				
-			if not player.state == player.STATE_POSSESSING and player._possessables_in_range.size() > 0:
-				player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
+	$\"MSG_Possess\".hide();
 	
 func _area_exited(area):
 	if area.name == \"GhostArea\" and !Engine.editor_hint:
@@ -110,20 +110,19 @@ func _area_exited(area):
 		player._possessables_in_range.erase(self);
 		
 		if not player.state == player.STATE_POSSESSING:
-			$\"MSG_Possess\".hide();
-			
-			if player._possessables_in_range.size() > 0:
-				player._possessables_in_range[0].get_node(\"MSG_Possess\").show();
 			
 			if player._possessables_in_range.size() == 0:
 				player = null;
+	$\"MSG_Possess\".hide();
 
 func _process(delta):
 	if Engine.editor_hint:
 		_editor_hint_msg_possess_time -= delta;
 		if _editor_hint_msg_possess_time <= 0:
 			$\"MSG_Possess\".hide();
-			set_process(false);"
+			set_process(false);
+		
+	"
 
 [sub_resource type="GDScript" id=2]
 
@@ -162,6 +161,7 @@ tracks/0/keys = {
 
 [node name="Possessable" type="Area2D"]
 
+position = Vector2( 1, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
