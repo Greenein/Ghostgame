@@ -78,7 +78,7 @@ func _process(delta):
 			dir.y += int(Input.is_action_pressed(\"move_down\")) - int(Input.is_action_pressed(\"move_up\"));
 			_speed += dir.normalized() * movement_speed * delta;
 		
-		$\"Sprite\".flip_h = _speed.x > 0;
+		$\"Sprite\".flip_h = _speed.x < 0;
 		
 		if _speed.length() > 10:
 			_snd_move.volume_db = clamp(-48 + _speed.length() * 0.2, -48, 0);

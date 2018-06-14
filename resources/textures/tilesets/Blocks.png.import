@@ -7,10 +7,10 @@ path="res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex"
 [deps]
 
 source_file="res://resources/textures/tilesets/Blocks.png"
-source_md5="8da2526c9d85475abd40d1197b317c82"
+source_md5="37efe11253a2dadd5820cbed22a0fd19"
 
 dest_files=[ "res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex" ]
-dest_md5="2b7f70b297df85eea86b618e1b882bc4"
+dest_md5="cd93bd73f0a618fe2f56a07833c38098"
 
 [params]
 
