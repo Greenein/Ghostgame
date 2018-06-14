@@ -110,7 +110,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -133,7 +133,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D2" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -156,7 +156,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D3" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -179,7 +179,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D6" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -202,7 +202,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D7" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -225,7 +225,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D4" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -248,7 +248,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D8" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -271,7 +271,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D13" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -294,7 +294,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D14" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -317,7 +317,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D15" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -340,7 +340,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D17" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -363,7 +363,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D18" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -386,7 +386,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D9" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -409,7 +409,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D16" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -432,7 +432,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D10" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -455,7 +455,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D11" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
@@ -478,7 +478,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D12" index="0"]
 
-position = Vector2( -4.76837e-06, 4.76837e-06 )
+position = Vector2( -4.76837e-006, 4.76837e-006 )
 scale = Vector2( 2.46154, 2.46154 )
 shape = SubResource( 1 )
 __meta__ = {
