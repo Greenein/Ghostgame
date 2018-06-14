@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/entities/Crate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/entities/Ghost.tscn" type="PackedScene" id=4]
 
-[node name="TesteWorldNiklas01" type="Node2D" index="0"]
+[node name="TesteWorldNiklas01" type="Node2D"]
 
 [node name="TileMap" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -52,7 +52,6 @@ collision_mask = 1
 
 [node name="Collision" type="Node2D" parent="CollisionBlock" index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }

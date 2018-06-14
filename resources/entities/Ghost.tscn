@@ -123,8 +123,8 @@ func _process(delta):
 		
 		# Possessnachricht über dem ausgewählten Objekt, welches possesst werden kann.
 		if _possessables_in_range.size() > 0:
-			if _possessible_index > 0:
-				_possessables_in_range[(_possessible_index - 1) % _possessables_in_range.size()].get_node(\"MSG_Possess\").hide();
+			for i in _possessible_index:
+				_possessables_in_range[(i) % _possessables_in_range.size()].get_node(\"MSG_Possess\").hide();
 			_possessables_in_range[_possessible_index % _possessables_in_range.size()].get_node(\"MSG_Possess\").show();
 
 func limit_movement(axis):
