@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chest.png-97defc45b2f28ddf3a9b69ecf912d04e.stex"
+path="res://.import/Crate.png-996cb869f45cad11f2c8fa4d811a49ac.stex"
 
 [deps]
 
-source_file="res://resources/textures/entities/Chest.png"
+source_file="res://resources/textures/entities/Crate.png"
 source_md5="c14c57c3d65ce9a5615c76ce21a2385b"
 
-dest_files=[ "res://.import/Chest.png-97defc45b2f28ddf3a9b69ecf912d04e.stex" ]
+dest_files=[ "res://.import/Crate.png-996cb869f45cad11f2c8fa4d811a49ac.stex" ]
 dest_md5="e75f252f3c154b92105dae2cda362aa3"
 
 [params]

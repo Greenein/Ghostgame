@@ -10,7 +10,7 @@ damping = 0.5
 spread = 1.0
 hipass = 0.0
 dry = 1.0
-wet = 0.01
+wet = 0.02
 
 [resource]
 

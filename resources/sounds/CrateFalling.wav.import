@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CrateFalling.wav-ff6740619db60fb4e828edbd49d83651.sample"
+
+[deps]
+
+source_file="res://resources/sounds/CrateFalling.wav"
+source_md5="0fb2badac3b3a0df7289a3a7ec84152c"
+
+dest_files=[ "res://.import/CrateFalling.wav-ff6740619db60fb4e828edbd49d83651.sample" ]
+dest_md5="59bf52feb1c25e6edf84ec5bba313c80"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

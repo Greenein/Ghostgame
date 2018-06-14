@@ -66,6 +66,7 @@ editor/display_folded = true
 position = Vector2( 0, -24 )
 collision_layer = 4
 _sections_unfolded = [ "Collision" ]
+msg_posses_offset = Vector2( 0, -16 )
 
 [node name="Shape" type="CollisionShape2D" parent="Possessable" index="0"]
 

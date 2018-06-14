@@ -6,34 +6,89 @@
 
 script/source = "extends KinematicBody2D
 
-export var gravity = Vector2(0, 1);
+# Deadzone of controller axis.
+const DEADZONE = 0.25;
+
+export var gravity = Vector2(0, 90);
+
+# Movement speed in pixels per second.
+export(float) var movement_speed = 16;
+
+# Friction of the movement.
+# The player's speed will be multiplied by this value in the span of one second.
+export(float) var friction = 0.00003;
+
+# The current speed of the moveable.
+var speed = Vector2(0, 0);
+
+# True if colliding with ground.
+var on_ground = true;
 
 onready var _p = $\"Possessable\";
-var _speed = Vector2(0, 0);
+
+# Private position used to calculate movement.
+# The actual position property will be set to a rounded version of this variable.
+onready var _position = position;
+
+# Snaps the position to the given grid.
+func snap_position(grid = Vector2(16, 16)):
+	var pos = global_position;
+	global_position = Vector2(round(pos.x / grid.x) * grid.x, round(pos.y / grid.y) * grid.y);
 
 func _ready():
-	set_process(false);
+	add_user_signal(\"impact\", [\"amount\"]);
 	
-	_p.connect(\"possessed\", self, \"_possessed\");
-	_p.connect(\"unpossessed\", self, \"_unpossessed\");
+	_p.connect(\"possessed\", self, \"possessed\");
+	_p.connect(\"unpossessed\", self, \"unpossessed\");
 
 func _process(delta):
-	var movement = Vector2(0, 0);
-	if Input.is_action_pressed(\"move_left\"):
-		movement.x -= 1 * delta;
-	if Input.is_action_pressed(\"move_right\"):
-		movement.x += 1 * delta;
+	var on_ground_new = test_move(global_transform, Vector2(0, 1));
+	if on_ground_new:
+		var snd_falling = $\"Sounds/Falling\";
+		if snd_falling.is_playing():
+			snd_falling.stop();
+		
+		if not on_ground:
+			emit_signal(\"impact\", speed.x);
+			var snd_impact = $\"Sounds/Impact\";
+			snd_impact.volume_db = clamp(-60 + speed.length() * 8, -60, -2);
+			snd_impact.play();
+		
+		if $\"Possessable\".possessed:
+			var analog = _deadzone(Vector2(Input.get_joy_axis(0, JOY_AXIS_0), 0));
+			if analog != Vector2(0, 0):
+				speed += analog * movement_speed * delta;
+			else:
+				var dir = Vector2(0, 0);
+				dir.x += int(Input.is_action_pressed(\"move_right\")) - int(Input.is_action_pressed(\"move_left\"));
+				speed += dir.normalized() * movement_speed * delta;
+	else:
+		if $\"Possessable\".possessed:
+			if on_ground:
+				speed.x = 0;
+				snap_position();
+		
+		var snd_falling = $\"Sounds/Falling\";
+		if not snd_falling.is_playing():
+			snd_falling.play();
+		snd_falling.volume_db = clamp(-60 + speed.length() * 6, -60, -24);
+		
+		speed += gravity * delta;
 	
-	_speed += movement;
-	_speed += gravity * delta;
+	on_ground = on_ground_new;
 	
-	move_and_slide(_speed);
+	speed *= pow(friction, delta);
+	speed = move_and_slide(speed, Vector2(0, -1));
 
-func _possessed(player):
-	set_process(true);
-
-func _unpossessed(player):
-	set_process(false);"
+func _deadzone(axis):
+	var length = axis.length();
+	
+	if length < DEADZONE:
+		return Vector2(0, 0);
+	if length > 1:
+		return axis.normalized();
+	
+	return axis;"
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -48,7 +103,9 @@ collision_mask = 11
 collision/safe_margin = 0.08
 script = SubResource( 1 )
 _sections_unfolded = [ "Collision" ]
-gravity = Vector2( 0, 1 )
+gravity = Vector2( 0, 90 )
+movement_speed = 16
+friction = 3e-05
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
 
