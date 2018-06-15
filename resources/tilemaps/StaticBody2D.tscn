@@ -5,9 +5,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" index="0"]
 
-position = Vector2( 2.38419e-07, 2.38419e-07 )
+position = Vector2( 2.38419e-007, 2.38419e-007 )
 scale = Vector2( 0.25, 0.25 )
 input_pickable = false
 collision_layer = 2
@@ -20,7 +20,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0, 1.90735e-06 )
+position = Vector2( 0, 1.90735e-006 )
 scale = Vector2( 3.2, 3.2 )
 shape = SubResource( 1 )
 __meta__ = {

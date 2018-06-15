@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/tilemaps/StaticBody2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/textures/entities/immovable_objects/IronCrate.png" type="Texture" id=2]
+
+[node name="IronCrate" type="Node2D" index="0"]
+
+[node name="StaticBody2D" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 7.15256e-007, 7.15256e-007 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+
+

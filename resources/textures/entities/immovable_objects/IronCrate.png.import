@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Barrel.png-b9e95e1cec28ae7dd639d12b9a9a3a7a.stex"
+path="res://.import/IronCrate.png-d8dc1c5308647e4f5a65f2e1174e652a.stex"
 
 [deps]
 
-source_file="res://resources/textures/entities/movable_objects/Barrel.png"
-dest_files=[ "res://.import/Barrel.png-b9e95e1cec28ae7dd639d12b9a9a3a7a.stex" ]
+source_file="res://resources/textures/entities/immovable_objects/IronCrate.png"
+dest_files=[ "res://.import/IronCrate.png-d8dc1c5308647e4f5a65f2e1174e652a.stex" ]
 
 [params]
 

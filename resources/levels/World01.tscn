@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/tilemaps/TileMapBlocks.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/entities/Ghost.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/entities/Crate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/entities/Lamp.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/tilemaps/StaticBody2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/entities/Barrel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/entities/Lamp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/entities/IronCrate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/tilemaps/StaticBody2D.tscn" type="PackedScene" id=7]
 
 [node name="World01" type="Node2D" index="0"]
 
@@ -17,7 +19,6 @@ tile_data = PoolIntArray( -524303, 10, 0, -524302, 14, 0, -524301, 14, 0, -52430
 
 [node name="Ghost" parent="." index="1" instance=ExtResource( 2 )]
 
-editor/display_folded = true
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Camera" type="Camera2D" parent="Ghost" index="3"]
@@ -46,170 +47,213 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Limit" ]
 
-[node name="Crates" type="Node2D" parent="." index="2"]
+[node name="Objects" type="Node2D" parent="." index="2"]
 
-editor/display_folded = true
+position = Vector2( -239.526, -141.308 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Crate" parent="Crates" index="0" instance=ExtResource( 3 )]
-
-position = Vector2( 224.474, 66.692 )
-
-[node name="Crate2" parent="Crates" index="1" instance=ExtResource( 3 )]
-
-position = Vector2( -151.526, 18.692 )
-
-[node name="Crate3" parent="Crates" index="2" instance=ExtResource( 3 )]
-
-position = Vector2( 208.474, -77.308 )
-
-[node name="Crate4" parent="Crates" index="3" instance=ExtResource( 3 )]
-
-position = Vector2( -63.526, -93.308 )
-
-[node name="Lamps" type="Node2D" parent="." index="3"]
-
-editor/display_folded = true
-
-[node name="Lamp" parent="Lamps" index="0" instance=ExtResource( 4 )]
-
-position = Vector2( 160.474, 82.692 )
-
-[node name="Lamp2" parent="Lamps" index="1" instance=ExtResource( 4 )]
-
-position = Vector2( 64.474, -61.308 )
-
-[node name="Lamp3" parent="Lamps" index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 40.474, 82.692 )
-
-[node name="Lamp4" parent="Lamps" index="3" instance=ExtResource( 4 )]
-
-position = Vector2( 64.474, 82.692 )
-
-[node name="Collision" type="Node2D" parent="." index="4"]
+[node name="Crates" type="Node2D" parent="Objects" index="0"]
 
 editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StaticBody2D01" parent="Collision" index="0" instance=ExtResource( 5 )]
+[node name="Crate1" parent="Objects/Crates" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 32, 48 )
+
+[node name="Crate2" parent="Objects/Crates" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 88, 160 )
+
+[node name="Crate3" parent="Objects/Crates" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 472, 208 )
+
+[node name="Crate4" parent="Objects/Crates" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 464, 64 )
+
+[node name="Barrel" type="Node2D" parent="Objects" index="1"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Barrel" parent="Objects/Barrel" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 200, 48 )
+
+[node name="Lamps" type="Node2D" parent="Objects" index="2"]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Lamp" parent="Objects/Lamps" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( 128, 64 )
+
+[node name="Lamp2" parent="Objects/Lamps" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 312, 80 )
+
+[node name="Lamp3" parent="Objects/Lamps" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 304, 224 )
+
+[node name="Lamp4" parent="Objects/Lamps" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 408, 224 )
+
+[node name="Lamp5" parent="Objects/Lamps" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 280, 224 )
+
+[node name="Lamp6" parent="Objects/Lamps" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( 24, 272 )
+
+[node name="IronCrate" type="Node2D" parent="Objects" index="3"]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IronCrate" parent="Objects/IronCrate" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 208, 256 )
+
+[node name="Collision" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D01" parent="Collision" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 200.474, 90.692 )
 scale = Vector2( 1.75, 0.25 )
 
-[node name="StaticBody2D02" parent="Collision" index="1" instance=ExtResource( 5 )]
+[node name="StaticBody2D02" parent="Collision" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 120.474, 122.692 )
 scale = Vector2( 4.25, 0.25 )
 
-[node name="StaticBody2D03" parent="Collision" index="2" instance=ExtResource( 5 )]
+[node name="StaticBody2D03" parent="Collision" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( 56.474, 90.692 )
 scale = Vector2( 1.25, 0.25 )
 
-[node name="StaticBody2D04" parent="Collision" index="3" instance=ExtResource( 5 )]
+[node name="StaticBody2D04" parent="Collision" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 80.474, -53.308 )
 scale = Vector2( 1, 0.25 )
 
-[node name="StaticBody2D05" parent="Collision" index="4" instance=ExtResource( 5 )]
+[node name="StaticBody2D05" parent="Collision" index="4" instance=ExtResource( 7 )]
 
 position = Vector2( 200.474, -53.308 )
 scale = Vector2( 1.75, 0.25 )
 
-[node name="StaticBody2D06" parent="Collision" index="5" instance=ExtResource( 5 )]
+[node name="StaticBody2D06" parent="Collision" index="5" instance=ExtResource( 7 )]
 
 position = Vector2( 16.474, -85.308 )
 scale = Vector2( 1, 1.25 )
 
-[node name="StaticBody2D07" parent="Collision" index="6" instance=ExtResource( 5 )]
+[node name="StaticBody2D07" parent="Collision" index="6" instance=ExtResource( 7 )]
 
 position = Vector2( -143.526, 82.692 )
 scale = Vector2( 1, 1.5 )
 
-[node name="StaticBody2D08" parent="Collision" index="7" instance=ExtResource( 5 )]
+[node name="StaticBody2D08" parent="Collision" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( -199.526, -69.308 )
 scale = Vector2( 0.75, 0.25 )
 
-[node name="StaticBody2D12" parent="Collision" index="8" instance=ExtResource( 5 )]
+[node name="StaticBody2D12" parent="Collision" index="8" instance=ExtResource( 7 )]
 
-position = Vector2( -71.526, -69.308 )
+position = Vector2( -63.526, -69.308 )
 scale = Vector2( 1.75, 0.25 )
 
-[node name="StaticBody2D09" parent="Collision" index="9" instance=ExtResource( 5 )]
+[node name="StaticBody2D09" parent="Collision" index="9" instance=ExtResource( 7 )]
 
 position = Vector2( -231.526, 2.692 )
 scale = Vector2( 0.25, 4 )
 
-[node name="StaticBody2D11" parent="Collision" index="10" instance=ExtResource( 5 )]
+[node name="StaticBody2D11" parent="Collision" index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 264.474, 2.692 )
 scale = Vector2( 0.25, 4 )
 
-[node name="StaticBody2D10" parent="Collision" index="11" instance=ExtResource( 5 )]
+[node name="StaticBody2D10" parent="Collision" index="11" instance=ExtResource( 7 )]
 
 position = Vector2( 16.474, -133.308 )
 scale = Vector2( 8, 0.25 )
 
-[node name="StaticBody2D13" parent="Collision" index="12" instance=ExtResource( 5 )]
+[node name="StaticBody2D13" parent="Collision" index="12" instance=ExtResource( 7 )]
 
 position = Vector2( 16.474, 138.692 )
 scale = Vector2( 8, 0.25 )
 
-[node name="StaticBody2D14" parent="Collision" index="13" instance=ExtResource( 5 )]
+[node name="StaticBody2D14" parent="Collision" index="13" instance=ExtResource( 7 )]
 
 position = Vector2( 168.474, 106.692 )
 
-[node name="StaticBody2D15" parent="Collision" index="14" instance=ExtResource( 5 )]
+[node name="StaticBody2D15" parent="Collision" index="14" instance=ExtResource( 7 )]
 
 position = Vector2( 88.474, 106.692 )
 
-[node name="StaticBody2D16" parent="Collision" index="15" instance=ExtResource( 5 )]
+[node name="StaticBody2D16" parent="Collision" index="15" instance=ExtResource( 7 )]
 
 position = Vector2( 8.474, 90.692 )
 scale = Vector2( 0.25, 0.75 )
 
-[node name="SolidCollision" type="Node2D" parent="." index="5"]
+[node name="SolidCollision" type="Node2D" parent="." index="4"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StaticBody2DSolid01" parent="SolidCollision" index="0" instance=ExtResource( 5 )]
+[node name="StaticBody2DSolid01" parent="SolidCollision" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 16.474, -149.308 )
 scale = Vector2( 8.5, 0.25 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="StaticBody2DSolid02" parent="SolidCollision" index="1" instance=ExtResource( 5 )]
+[node name="StaticBody2DSolid02" parent="SolidCollision" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 16.474, 154.692 )
 scale = Vector2( 8.5, 0.25 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="StaticBody2DSolid03" parent="SolidCollision" index="2" instance=ExtResource( 5 )]
+[node name="StaticBody2DSolid03" parent="SolidCollision" index="2" instance=ExtResource( 7 )]
 
 position = Vector2( -247.526, 2.692 )
 scale = Vector2( 0.25, 4.5 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="StaticBody2DSolid04" parent="SolidCollision" index="3" instance=ExtResource( 5 )]
+[node name="StaticBody2DSolid04" parent="SolidCollision" index="3" instance=ExtResource( 7 )]
 
 position = Vector2( 280.474, 2.692 )
 scale = Vector2( 0.25, 4.5 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." index="6"]
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="5"]
 
 position = Vector2( -239.526, -141.308 )
 color = Color( 0.254505, 0.239502, 0.28125, 1 )
 _sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 

@@ -39,9 +39,6 @@ func snap_falling_position():
 
 func _ready():
 	add_user_signal(\"impact\", [\"amount\"]);
-	
-	_p.connect(\"possessed\", self, \"possessed\");
-	_p.connect(\"unpossessed\", self, \"unpossessed\");
 
 func _process(delta):
 	var on_ground_new = test_move(global_transform, Vector2(0, 1));
@@ -96,7 +93,7 @@ func _deadzone(axis):
 custom_solver_bias = 0.0
 radius = 24.0
 
-[node name="Moveable" type="KinematicBody2D"]
+[node name="Moveable" type="KinematicBody2D" index="0"]
 
 visible = false
 input_pickable = false
@@ -107,7 +104,7 @@ script = SubResource( 1 )
 _sections_unfolded = [ "Collision" ]
 gravity = Vector2( 0, 90 )
 movement_speed = 16
-friction = 3e-05
+friction = 3e-005
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
 
