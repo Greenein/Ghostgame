@@ -7,10 +7,7 @@ path="res://.import/GhostMove.wav-81211181cb51b0939d12e1ab12f2a5cf.sample"
 [deps]
 
 source_file="res://resources/sounds/GhostMove.wav"
-source_md5="702d355a17da9edd347e98d8f7232e88"
-
 dest_files=[ "res://.import/GhostMove.wav-81211181cb51b0939d12e1ab12f2a5cf.sample" ]
-dest_md5="8c1446fdb5cba6896b07dc157ad3171c"
 
 [params]
 

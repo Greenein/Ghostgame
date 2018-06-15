@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex"
+path="res://.import/Ghost.png-a0ad0c52fca1c4fed20985abaf782c20.stex"
 
 [deps]
 
-source_file="res://resources/textures/tilesets/Blocks.png"
-dest_files=[ "res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex" ]
+source_file="res://resources/textures/entities/characters/Ghost.png"
+dest_files=[ "res://.import/Ghost.png-a0ad0c52fca1c4fed20985abaf782c20.stex" ]
 
 [params]
 

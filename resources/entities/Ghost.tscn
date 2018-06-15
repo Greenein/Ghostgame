@@ -1,11 +1,14 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://resources/textures/entities/Ghost.png" type="Texture" id=1]
+[ext_resource path="res://resources/textures/entities/characters/Ghost.png" type="Texture" id=1]
 [ext_resource path="res://resources/sounds/GhostMove.wav" type="AudioStream" id=2]
 
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends KinematicBody2D
+
+# REMOVE LATER
+var test_timer = 0.0
 
 # Determines if fullscreen is active
 var is_fullscreen = false
@@ -126,6 +129,18 @@ func _process(delta):
 			for i in _possessible_index:
 				_possessables_in_range[(i) % _possessables_in_range.size()].get_node(\"MSG_Possess\").hide();
 			_possessables_in_range[_possessible_index % _possessables_in_range.size()].get_node(\"MSG_Possess\").show();
+	
+	# REMOVE LATER
+	test_timer += delta
+	
+	if test_timer > 0.1:
+		
+		test_timer = 0
+		
+		if _possessables_in_range.size() != 0 and state == STATE_IDLE:
+			_possessables_in_range[_possessible_index % _possessables_in_range.size()].possess(self);
+		elif possessed_object != null and state == STATE_POSSESSING:
+			possessed_object.unpossess();
 
 func limit_movement(axis):
 	if abs(axis.x) < MOVEMENT_DEADZONE:
@@ -169,7 +184,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
 }
 
-[node name="Ghost" type="KinematicBody2D"]
+[node name="Ghost" type="KinematicBody2D" index="0"]
 
 input_pickable = true
 collision_layer = 4
@@ -224,6 +239,7 @@ editor/display_folded = true
 
 stream = ExtResource( 2 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

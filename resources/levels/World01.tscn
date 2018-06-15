@@ -173,6 +173,7 @@ scale = Vector2( 0.25, 0.75 )
 
 [node name="SolidCollision" type="Node2D" parent="." index="5"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }

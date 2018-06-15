@@ -7,10 +7,7 @@ path="res://.import/Unpossess.wav-c1720e92187461928b86da3d8b0a36a4.sample"
 [deps]
 
 source_file="res://resources/sounds/Unpossess.wav"
-source_md5="e4e5977e10ec4add63bb0a3789c0266c"
-
 dest_files=[ "res://.import/Unpossess.wav-c1720e92187461928b86da3d8b0a36a4.sample" ]
-dest_md5="98abb45aef924386e515f82dab592322"
 
 [params]
 

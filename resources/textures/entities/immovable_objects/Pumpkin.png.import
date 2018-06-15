@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex"
+path="res://.import/Pumpkin.png-a5aa45aac6c0b35ec9163c29dc3f0197.stex"
 
 [deps]
 
-source_file="res://resources/textures/tilesets/Blocks.png"
-dest_files=[ "res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex" ]
+source_file="res://resources/textures/entities/immovable_objects/Pumpkin.png"
+dest_files=[ "res://.import/Pumpkin.png-a5aa45aac6c0b35ec9163c29dc3f0197.stex" ]
 
 [params]
 

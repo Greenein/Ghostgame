@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ghost.png-6059c65f1780e6097c9a9ccee3b0e537.stex"
+path="res://.import/Zombie.png-38625cc479a32a48f98b5ec9a15aec83.stex"
 
 [deps]
 
-source_file="res://resources/textures/entities/Ghost.png"
-source_md5="082879f20494763bd3731703e1b8c819"
-
-dest_files=[ "res://.import/Ghost.png-6059c65f1780e6097c9a9ccee3b0e537.stex" ]
-dest_md5="149082096e6227c51701c176c49b6eb8"
+source_file="res://resources/textures/entities/enemies/Zombie.png"
+dest_files=[ "res://.import/Zombie.png-38625cc479a32a48f98b5ec9a15aec83.stex" ]
 
 [params]
 
@@ -19,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

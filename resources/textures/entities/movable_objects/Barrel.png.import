@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex"
+path="res://.import/Barrel.png-b9e95e1cec28ae7dd639d12b9a9a3a7a.stex"
 
 [deps]
 
-source_file="res://resources/textures/tilesets/Blocks.png"
-dest_files=[ "res://.import/Blocks.png-c76920fb004af7f18f5b2ffa43a3def6.stex" ]
+source_file="res://resources/textures/entities/movable_objects/Barrel.png"
+dest_files=[ "res://.import/Barrel.png-b9e95e1cec28ae7dd639d12b9a9a3a7a.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

@@ -7,10 +7,7 @@ path="res://.import/CrateMove.wav-cad6a5deb419567eac9f0c909befbc09.sample"
 [deps]
 
 source_file="res://resources/sounds/CrateMove.wav"
-source_md5="890865440bf8c313dc3d43becba9b579"
-
 dest_files=[ "res://.import/CrateMove.wav-cad6a5deb419567eac9f0c909befbc09.sample" ]
-dest_md5="fbea529e2b874655cda00507829e864d"
 
 [params]
 

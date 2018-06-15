@@ -7,10 +7,7 @@ path="res://.import/Possess.png-bed22b9677a630955306e358c5a3f524.stex"
 [deps]
 
 source_file="res://resources/textures/ui/Possess.png"
-source_md5="986b2e5b88828bbb0e5d84fdff67d695"
-
 dest_files=[ "res://.import/Possess.png-bed22b9677a630955306e358c5a3f524.stex" ]
-dest_md5="5bf564587cad9084d018bb06b2c79c47"
 
 [params]
 

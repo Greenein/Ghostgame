@@ -7,10 +7,7 @@ path="res://.import/CrateImpact.wav-c4e72b788f48d82e72ee844286ea0787.sample"
 [deps]
 
 source_file="res://resources/sounds/CrateImpact.wav"
-source_md5="ed7352c3c7691b2950adf789085d0026"
-
 dest_files=[ "res://.import/CrateImpact.wav-c4e72b788f48d82e72ee844286ea0787.sample" ]
-dest_md5="952804224728236b08807949169a6729"
 
 [params]
 

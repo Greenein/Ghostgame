@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/entities/Possessable.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/textures/entities/Lamp.png" type="Texture" id=2]
+[ext_resource path="res://resources/textures/entities/immovable_objects/Lamp.png" type="Texture" id=2]
 [ext_resource path="res://resources/sounds/LampTurnOn.wav" type="AudioStream" id=3]
 [ext_resource path="res://resources/sounds/LampTurnOff.wav" type="AudioStream" id=4]
 
@@ -55,7 +55,7 @@ func _update_sprite():
 custom_solver_bias = 0.0
 extents = Vector2( 10, 17 )
 
-[node name="Lamp" type="Node2D"]
+[node name="Lamp" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 turned_on = false
@@ -88,6 +88,7 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 stream = ExtResource( 3 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -98,6 +99,7 @@ area_mask = 1
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

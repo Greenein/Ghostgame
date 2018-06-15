@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Lamp.png-5eb49820289e9470e6f236d00435cd5d.stex"
+path="res://.import/Lamp.png-35eb02d718aa56a80300196443517da8.stex"
 
 [deps]
 
-source_file="res://resources/textures/entities/Lamp.png"
-source_md5="d318e9ed17e96cdb54bdd214f85e51a3"
-
-dest_files=[ "res://.import/Lamp.png-5eb49820289e9470e6f236d00435cd5d.stex" ]
-dest_md5="5620ea0cacf4d0e357efee98497102b2"
+source_file="res://resources/textures/entities/immovable_objects/Lamp.png"
+dest_files=[ "res://.import/Lamp.png-35eb02d718aa56a80300196443517da8.stex" ]
 
 [params]
 
@@ -28,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
