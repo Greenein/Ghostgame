@@ -206,4 +206,10 @@ scale = Vector2( 0.25, 4.5 )
 collision_layer = 1
 collision_mask = 1
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="6"]
+
+position = Vector2( -239.526, -141.308 )
+color = Color( 0.254505, 0.239502, 0.28125, 1 )
+_sections_unfolded = [ "Visibility" ]
+
 

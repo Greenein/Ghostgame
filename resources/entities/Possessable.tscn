@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/sounds/Possess.wav" type="AudioStream" id=1]
 [ext_resource path="res://resources/sounds/Unpossess.wav" type="AudioStream" id=2]
@@ -20,6 +20,7 @@ var possessed = false;
 var player = null;
 
 var _editor_hint_msg_possess_time = 0.0;
+var _is_ready = false;
 
 # Possess this object by the given player node.
 func possess(player):
@@ -141,6 +142,12 @@ func hide():
 	var anim = $\"Possess/AnimationPlayer\";
 	anim.play(\"Idle\");"
 
+[sub_resource type="CanvasItemMaterial" id=4]
+
+render_priority = 0
+blend_mode = 0
+light_mode = 1
+
 [sub_resource type="Animation" id=3]
 
 length = 1.0
@@ -159,7 +166,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[node name="Possessable" type="Area2D"]
+[node name="Possessable" type="Area2D" index="0"]
 
 position = Vector2( 1, 1 )
 input_pickable = true
@@ -180,6 +187,7 @@ editor/display_folded = true
 
 stream = ExtResource( 1 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -190,6 +198,7 @@ area_mask = 1
 
 stream = ExtResource( 2 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -200,6 +209,7 @@ area_mask = 1
 
 stream = ExtResource( 3 )
 volume_db = -3.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -208,17 +218,20 @@ area_mask = 1
 
 [node name="MSG_Possess" type="Node2D" parent="." index="1"]
 
-visible = false
 z_index = 10
 script = SubResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Possess" type="Sprite" parent="MSG_Possess" index="0"]
 
+light_mask = 0
+material = SubResource( 4 )
+z_index = 1024
+z_as_relative = false
 texture = ExtResource( 4 )
 vframes = 2
 frame = 1
-_sections_unfolded = [ "Animation", "Transform" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MSG_Possess/Possess" index="0"]
 

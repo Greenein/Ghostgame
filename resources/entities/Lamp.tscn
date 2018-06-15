@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/entities/Possessable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/textures/entities/immovable_objects/Lamp.png" type="Texture" id=2]
-[ext_resource path="res://resources/sounds/LampTurnOn.wav" type="AudioStream" id=3]
-[ext_resource path="res://resources/sounds/LampTurnOff.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/textures/lights/Sphere.png" type="Texture" id=3]
+[ext_resource path="res://resources/sounds/LampTurnOn.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/sounds/LampTurnOff.wav" type="AudioStream" id=5]
 
 [sub_resource type="GDScript" id=1]
 
@@ -40,8 +41,10 @@ func set_turned_on(value):
 	if _snd_turn_on != null:
 		if value:
 			_snd_turn_on.play();
+			$\"Light\".enabled = true;
 		else:
 			_snd_turn_off.play();
+			$\"Light\".enabled = false;
 	
 	_update_sprite();
 
@@ -82,11 +85,41 @@ vframes = 2
 hframes = 2
 _sections_unfolded = [ "Animation", "Transform" ]
 
-[node name="Sounds" type="Node2D" parent="." index="2"]
+[node name="Light" type="Light2D" parent="." index="2"]
+
+position = Vector2( 0, -24 )
+enabled = false
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 0.8
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Range", "Shadow" ]
+
+[node name="Sounds" type="Node2D" parent="." index="3"]
+
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TurnOn" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
 
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -97,7 +130,7 @@ area_mask = 1
 
 [node name="TurnOff" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

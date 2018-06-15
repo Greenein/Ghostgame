@@ -61,7 +61,7 @@ msg_posses_offset = Vector2( 0, -24 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." index="1"]
 
-scale = Vector2( 0.98, 0.98 )
+scale = Vector2( 0.99, 0.99 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
