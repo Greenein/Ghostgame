@@ -7,9 +7,6 @@
 
 script/source = "extends KinematicBody2D
 
-# REMOVE LATER
-var test_timer = 0.0
-
 # Determines if fullscreen is active
 var is_fullscreen = false
 
@@ -130,17 +127,6 @@ func _process(delta):
 				_possessables_in_range[(i) % _possessables_in_range.size()].get_node(\"MSG_Possess\").hide();
 			_possessables_in_range[_possessible_index % _possessables_in_range.size()].get_node(\"MSG_Possess\").show();
 	
-	# REMOVE LATER
-	test_timer += delta
-	
-	if test_timer > 0.1:
-		
-		test_timer = 0
-		
-		if _possessables_in_range.size() != 0 and state == STATE_IDLE:
-			_possessables_in_range[_possessible_index % _possessables_in_range.size()].possess(self);
-		elif possessed_object != null and state == STATE_POSSESSING:
-			possessed_object.unpossess();
 
 func limit_movement(axis):
 	if abs(axis.x) < MOVEMENT_DEADZONE:
