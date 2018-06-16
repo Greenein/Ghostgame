@@ -6,7 +6,7 @@
 [ext_resource path="res://resources/entities/Barrel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/entities/Lamp.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/entities/IronCrate.tscn" type="PackedScene" id=6]
-[ext_resource path="res://resources/tilemaps/StaticBody2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/collisions/RectangleBody.tscn" type="PackedScene" id=7]
 
 [node name="World01" type="Node2D" index="0"]
 
@@ -19,6 +19,7 @@ tile_data = PoolIntArray( -524303, 10, 0, -524302, 14, 0, -524301, 14, 0, -52430
 
 [node name="Ghost" parent="." index="1" instance=ExtResource( 2 )]
 
+position = Vector2( -47.526, 2.692 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Camera" type="Camera2D" parent="Ghost" index="3"]
@@ -77,19 +78,20 @@ position = Vector2( 472, 208 )
 
 position = Vector2( 464, 64 )
 
-[node name="Barrel" type="Node2D" parent="Objects" index="1"]
+[node name="Barrels" type="Node2D" parent="Objects" index="1"]
 
 editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Barrel" parent="Objects/Barrel" index="0" instance=ExtResource( 4 )]
+[node name="Barrel" parent="Objects/Barrels" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 200, 48 )
 
 [node name="Lamps" type="Node2D" parent="Objects" index="2"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -120,6 +122,7 @@ position = Vector2( 24, 272 )
 
 [node name="IronCrate" type="Node2D" parent="Objects" index="3"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -130,7 +133,6 @@ position = Vector2( 208, 256 )
 
 [node name="Collision" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -177,7 +179,7 @@ scale = Vector2( 0.75, 0.25 )
 
 [node name="StaticBody2D12" parent="Collision" index="8" instance=ExtResource( 7 )]
 
-position = Vector2( -63.526, -69.308 )
+position = Vector2( -71.526, -69.308 )
 scale = Vector2( 1.75, 0.25 )
 
 [node name="StaticBody2D09" parent="Collision" index="9" instance=ExtResource( 7 )]
@@ -215,6 +217,7 @@ scale = Vector2( 0.25, 0.75 )
 
 [node name="SolidCollision" type="Node2D" parent="." index="4"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }

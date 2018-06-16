@@ -5,7 +5,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="StaticBody2D" type="StaticBody2D" index="0"]
+[node name="Rectangle" type="StaticBody2D" index="0"]
 
 position = Vector2( 2.38419e-007, 2.38419e-007 )
 scale = Vector2( 0.25, 0.25 )

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -15, -16, 15, -16, 16, -15, 16, 15, 15, 16, -15, 16, -16, 15, -16, -15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" index="0"]
+
+scale = Vector2( 0.99, 0.99 )
+shape = SubResource( 1 )
+
+
