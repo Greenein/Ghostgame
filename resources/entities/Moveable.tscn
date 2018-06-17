@@ -16,7 +16,7 @@ export(float) var movement_speed = 16;
 
 # Friction of the movement.
 # The player's speed will be multiplied by this value in the span of one second.
-export(float) var friction = 0.00003;
+export(float) var friction = 0.00002;
 
 # The current speed of the moveable.
 var speed = Vector2(0, 0);
@@ -26,9 +26,10 @@ var on_ground = true;
 
 onready var _p = $\"Possessable\";
 
+# UNUSED
 # Private position used to calculate movement.
 # The actual position property will be set to a rounded version of this variable.
-onready var _position = position;
+#onready var _position = position;
 
 # Snapes the position.
 func snap_falling_position():
@@ -42,6 +43,7 @@ func _ready():
 
 func _process(delta):
 	var on_ground_new = test_move(global_transform, Vector2(0, 1));
+	
 	if on_ground_new:
 		var snd_falling = $\"Sounds/Falling\";
 		if snd_falling.is_playing():
@@ -64,19 +66,29 @@ func _process(delta):
 	else:
 		if $\"Possessable\".possessed:
 			if on_ground:
-				snap_falling_position();
+				snap_falling_position()
 		
-		var snd_falling = $\"Sounds/Falling\";
+		var snd_falling = $\"Sounds/Falling\"
 		if not snd_falling.is_playing():
-			snd_falling.play();
+			snd_falling.play()
 			
-		snd_falling.volume_db = clamp(-60 + speed.length() * 6, -60, -24);
-		speed += gravity * delta;
+		snd_falling.volume_db = clamp(-60 + speed.length() * 6, -60, -24)
+		speed += gravity * delta
 	
-	on_ground = on_ground_new;
+	on_ground = on_ground_new
 	
-	speed *= pow(friction, delta);
-	speed = move_and_slide(speed, Vector2(0, -1));
+	speed *= pow(friction, delta)
+	speed = move_and_slide(speed, Vector2(0, -1))
+	
+	# Move stacked blocks
+	#var rc_up = get_node(\"RayCastUp\")
+	
+	#if rc_up.is_colliding():
+		
+		#var collider = rc_up.get_collider()
+		
+		#if abs(collider.speed.x) < abs(speed.x):
+		#	 collider.speed.x = speed.x
 
 func _deadzone(axis):
 	var length = axis.length();
@@ -95,7 +107,6 @@ radius = 24.0
 
 [node name="Moveable" type="KinematicBody2D" index="0"]
 
-visible = false
 input_pickable = false
 collision_layer = 8
 collision_mask = 11
@@ -104,7 +115,7 @@ script = SubResource( 1 )
 _sections_unfolded = [ "Collision" ]
 gravity = Vector2( 0, 90 )
 movement_speed = 16
-friction = 3e-005
+friction = 2e-005
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
 

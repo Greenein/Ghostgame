@@ -47,12 +47,10 @@ func unpossessed(player):
 
 [node name="Crate" index="0" instance=ExtResource( 1 )]
 
-visible = true
 _sections_unfolded = [ "Collision", "collision" ]
 
 [node name="Possessable" parent="." index="0"]
 
-editor/display_folded = true
 msg_posses_offset = Vector2( 0, -24 )
 
 [node name="CollisionShape2D" parent="." index="1" instance=ExtResource( 2 )]

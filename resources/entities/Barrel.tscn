@@ -4,10 +4,10 @@
 [ext_resource path="res://resources/collisions/RoundRectangleShape.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/textures/entities/movable_objects/Barrel.png" type="Texture" id=3]
 [ext_resource path="res://resources/sounds/CrateMove.wav" type="AudioStream" id=4]
-[ext_resource path="res://resources/sounds/CrateFalling.wav" type="AudioStream" id=5]
-[ext_resource path="res://resources/sounds/CrateImpact.wav" type="AudioStream" id=6]
+[ext_resource path="res://resources/sounds/CrateImpact.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/sounds/CrateFalling.wav" type="AudioStream" id=6]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Sprite
 
@@ -48,11 +48,9 @@ func unpossessed(player):
 
 [node name="Barrel" index="0" instance=ExtResource( 1 )]
 
-visible = true
-
 [node name="Possessable" parent="." index="0"]
 
-editor/display_folded = true
+msg_posses_offset = Vector2( 0, -24 )
 
 [node name="CollisionShape" parent="Possessable" index="1"]
 
@@ -66,7 +64,7 @@ _sections_unfolded = [ "Transform" ]
 
 texture = ExtResource( 3 )
 hframes = 2
-script = SubResource( 3 )
+script = SubResource( 1 )
 
 [node name="Sounds" type="Node2D" parent="." index="3"]
 
@@ -82,7 +80,7 @@ bus = "Effects"
 area_mask = 1
 script = SubResource( 2 )
 
-[node name="Falling" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
+[node name="Impact" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
 
 stream = ExtResource( 5 )
 volume_db = 0.0
@@ -93,7 +91,7 @@ attenuation = 1.0
 bus = "Effects"
 area_mask = 1
 
-[node name="Impact" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
+[node name="Falling" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 
 stream = ExtResource( 6 )
 volume_db = 0.0
