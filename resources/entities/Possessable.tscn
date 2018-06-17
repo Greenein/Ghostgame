@@ -62,7 +62,7 @@ func unpossess():
 func set_msg_possess_offset(value):
 	_msg_possess_offset = value;
 	
-	if get_tree() != null:
+	if is_inside_tree():
 		if Engine.editor_hint:
 			$\"MSG_Possess\".show();
 			_editor_hint_msg_possess_time = 1;
@@ -142,13 +142,13 @@ func hide():
 	var anim = $\"Possess/AnimationPlayer\";
 	anim.play(\"Idle\");"
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=3]
 
 render_priority = 0
 blend_mode = 0
 light_mode = 1
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = true
@@ -218,6 +218,7 @@ area_mask = 1
 
 [node name="MSG_Possess" type="Node2D" parent="." index="1"]
 
+visible = false
 z_index = 10
 script = SubResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -225,7 +226,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="Possess" type="Sprite" parent="MSG_Possess" index="0"]
 
 light_mask = 0
-material = SubResource( 4 )
+material = SubResource( 3 )
 z_index = 1024
 z_as_relative = false
 texture = ExtResource( 4 )
@@ -240,7 +241,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Idle = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 

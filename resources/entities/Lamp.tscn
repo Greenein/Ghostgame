@@ -36,6 +36,7 @@ func get_possessed():
 	return possessed;
 
 func set_turned_on(value):
+	
 	turned_on = value;
 	
 	if _snd_turn_on != null:
@@ -49,9 +50,11 @@ func set_turned_on(value):
 	_update_sprite();
 
 func _update_sprite():
-	var sprite = $\"Sprite\";
-	if sprite != null:
-		sprite.frame = int(possessed) * 2 + int(turned_on);"
+	
+	if is_inside_tree():
+		var sprite = get_node(\"Sprite\");
+		if sprite != null:
+			sprite.frame = int(possessed) * 2 + int(turned_on);"
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -120,7 +123,7 @@ __meta__ = {
 [node name="TurnOn" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
 
 stream = ExtResource( 4 )
-volume_db = -10.0
+volume_db = -6.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
@@ -131,7 +134,7 @@ area_mask = 1
 [node name="TurnOff" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
 
 stream = ExtResource( 5 )
-volume_db = -10.0
+volume_db = -6.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
