@@ -9,7 +9,7 @@
 [ext_resource path="res://resources/collisions/RectangleBody.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/collisions/BorderCollision.tscn" type="PackedScene" id=8]
 
-[node name="World01" type="Node2D" index="0"]
+[node name="World01" type="Node2D"]
 
 position = Vector2( 239.526, 141.308 )
 
@@ -81,7 +81,6 @@ position = Vector2( 464, 64 )
 
 [node name="Barrels" type="Node2D" parent="Objects" index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -92,7 +91,6 @@ position = Vector2( 200, 48 )
 
 [node name="Lamps" type="Node2D" parent="Objects" index="2"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
