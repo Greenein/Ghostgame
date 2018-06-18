@@ -22,6 +22,7 @@ func _ready():
 
 func _process(delta):
 	
+	# defines the state of the pendel
 	state += (delta / cycle_time)
 	if state > cycle_time:
 		state = 0.0
@@ -31,7 +32,7 @@ func _process(delta):
 	
 	if possessed and Input.is_action_pressed(\"action\"):
 		time += delta / 3
-		if time > 1.0: time = 0.0
+	if time > 1.0: time = 0.0
 	
 	_update_sprite();
 
