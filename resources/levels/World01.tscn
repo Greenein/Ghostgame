@@ -21,6 +21,7 @@ tile_data = PoolIntArray( -524303, 10, 0, -524302, 14, 0, -524301, 14, 0, -52430
 
 [node name="Ghost" parent="." index="1" instance=ExtResource( 2 )]
 
+editor/display_folded = true
 position = Vector2( -47.526, 2.692 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
@@ -52,6 +53,7 @@ _sections_unfolded = [ "Drag Margin", "Limit" ]
 
 [node name="Objects" type="Node2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( -239.526, -141.308 )
 __meta__ = {
 "_edit_lock_": true
@@ -89,7 +91,6 @@ position = Vector2( 464, 64 )
 
 [node name="Barrels" type="Node2D" parent="Objects" index="2"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -142,6 +143,7 @@ position = Vector2( 208, 256 )
 
 [node name="Collision" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -229,7 +231,7 @@ scale = Vector2( 0.25, 0.75 )
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="5"]
 
 position = Vector2( -239.526, -141.308 )
-color = Color( 0.254505, 0.239502, 0.28125, 1 )
+color = Color( 0.165634, 0.138672, 0.25, 1 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true

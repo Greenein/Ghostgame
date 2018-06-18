@@ -28,22 +28,22 @@ script/source = "extends AudioStreamPlayer2D
 onready var moveable = $\"../..\";
 
 func _ready():
-	set_process(false);
+	set_process(false)
 	
-	$\"../../Possessable\".connect(\"possessed\", self, \"possessed\");
-	$\"../../Possessable\".connect(\"unpossessed\", self, \"unpossessed\");
+	$\"../../Possessable\".connect(\"possessed\", self, \"possessed\")
+	$\"../../Possessable\".connect(\"unpossessed\", self, \"unpossessed\")
 
 func _process(delta):
-	volume_db = clamp(-60 + abs(moveable.speed.x) * 20, -60, -28);
+	volume_db = clamp(-60 + abs(moveable.actual_movement.x * 0.6), -60, -28)
 
 func possessed(player):
-	set_process(true);
-	playing = true;
+	set_process(true)
+	playing = true
 	
 func unpossessed(player):
-	set_process(false);
-	playing = false;
-	volume_db = -60;"
+	set_process(false)
+	playing = false
+	volume_db = -60"
 
 [node name="Crate" index="0" instance=ExtResource( 1 )]
 
