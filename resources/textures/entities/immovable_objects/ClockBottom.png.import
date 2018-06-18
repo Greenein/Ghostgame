@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Clock.png-afd2daaceef1d66272302bae297862f4.stex"
+path="res://.import/ClockBottom.png-28683f87991c42ab577195f8fe5f80a4.stex"
 
 [deps]
 
-source_file="res://resources/textures/entities/immovable_objects/Clock.png"
-dest_files=[ "res://.import/Clock.png-afd2daaceef1d66272302bae297862f4.stex" ]
+source_file="res://resources/textures/entities/immovable_objects/ClockBottom.png"
+dest_files=[ "res://.import/ClockBottom.png-28683f87991c42ab577195f8fe5f80a4.stex" ]
 
 [params]
 
