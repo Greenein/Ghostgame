@@ -53,7 +53,6 @@ _sections_unfolded = [ "Drag Margin", "Limit" ]
 
 [node name="Objects" type="Node2D" parent="." index="2"]
 
-editor/display_folded = true
 position = Vector2( -239.526, -141.308 )
 __meta__ = {
 "_edit_lock_": true
@@ -68,7 +67,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Crates" type="Node2D" parent="Objects" index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -231,7 +229,7 @@ scale = Vector2( 0.25, 0.75 )
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="5"]
 
 position = Vector2( -239.526, -141.308 )
-color = Color( 0.165634, 0.138672, 0.25, 1 )
+color = Color( 0.215451, 0.194431, 0.294471, 1 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
