@@ -51,7 +51,7 @@ func _physics_process(delta):
 			var snd_falling = $\"Sounds/Falling\"
 			snd_falling.stop()
 			
-			emit_signal(\"impact\", speed.x);
+			emit_signal(\"impact\", speed.x)
 			var snd_impact = $\"Sounds/Impact\"
 			snd_impact.volume_db = clamp(-60 + actual_movement.length() * 8, -60, -2)
 			snd_impact.play()
@@ -60,7 +60,7 @@ func _physics_process(delta):
 		if $\"Possessable\".possessed:
 			var analog = _deadzone(Vector2(Input.get_joy_axis(0, JOY_AXIS_0), 0))
 			if analog != Vector2():
-				speed += analog * movement_speed * delta;
+				speed += analog * movement_speed * delta
 			else:
 				var dir = Vector2()
 				dir.x += int(Input.is_action_pressed(\"move_right\")) - int(Input.is_action_pressed(\"move_left\"))
@@ -102,14 +102,14 @@ func _physics_process(delta):
 		#	 collider.speed.x = speed.x
 
 func _deadzone(axis):
-	var length = axis.length();
+	var length = axis.length()
 	
 	if length < DEADZONE:
-		return Vector2();
+		return Vector2()
 	if length > 1:
-		return axis.normalized();
+		return axis.normalized()
 	
-	return axis;"
+	return axis"
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -129,6 +129,8 @@ movement_speed = 1200
 friction = 2e-005
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
+
+msg_posses_offset = Vector2( 0, 0 )
 
 [node name="PossessArea" type="CollisionShape2D" parent="Possessable" index="1"]
 

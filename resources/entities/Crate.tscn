@@ -12,14 +12,14 @@
 script/source = "extends Sprite
 
 func _ready():
-	$\"../Possessable\".connect(\"possessed\", self, \"possessed\");
-	$\"../Possessable\".connect(\"unpossessed\", self, \"unpossessed\");
+	$\"../Possessable\".connect(\"possessed\", self, \"possessed\")
+	$\"../Possessable\".connect(\"unpossessed\", self, \"unpossessed\")
 
 func possessed(player):
-	frame = 1;
+	frame = 1
 	
 func unpossessed(player):
-	frame = 0;"
+	frame = 0"
 
 [sub_resource type="GDScript" id=2]
 
