@@ -52,10 +52,6 @@ func unpossessed(player):
 
 msg_posses_offset = Vector2( 0, -24 )
 
-[node name="CollisionShape" parent="Possessable" index="1"]
-
-position = Vector2( -1, -1 )
-
 [node name="CollisionShape2D" parent="." index="1" instance=ExtResource( 2 )]
 
 _sections_unfolded = [ "Transform" ]

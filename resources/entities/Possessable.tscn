@@ -14,13 +14,13 @@ var _msg_possess_offset = Vector2(0, 0);
 export(Vector2) var msg_posses_offset = Vector2(0, 0) setget set_msg_possess_offset, get_msg_possess_offset;
 
 # True, if possessed by the player.
-var possessed = false;
+var possessed = false
 
 # Set to the player that is possessing this object.
-var player = null;
+var player = null
 
 var _editor_hint_msg_possess_time = 0.0;
-var _is_ready = false;
+var _is_ready = false
 
 # Possess this object by the given player node.
 func possess(player):
@@ -56,6 +56,10 @@ func unpossess():
 		emit_signal(\"unpossessed\", player);
 		
 		player.state = player.STATE_IDLE;
+		
+		# reset player possess list
+		player._possessables_in_range = player.get_node(\"GhostArea\").get_overlapping_areas()
+		
 	
 	$\"MSG_Possess\".hide();
 
@@ -122,7 +126,39 @@ func _process(delta):
 		if _editor_hint_msg_possess_time <= 0:
 			$\"MSG_Possess\".hide();
 			set_process(false);
+	
+func _input(event):
+	
+	# Enable the player to switch between objects in range
+	if !Engine.editor_hint:
 		
+		if possessed and event.is_action_pressed(\"switch_possessale\"): 
+			if player.can_switch:
+				var areas = player.get_node(\"GhostArea\").get_overlapping_areas()
+				areas.erase(self)
+			
+				if areas.size() > 0:
+					unpossess()
+					player.can_switch = false
+					areas[0].possess(player)
+					
+		#if possessed and event.is_action_pressed(\"switch_possessale\"):
+			#print(\"Press \" + str(self))
+			# reset player possess list
+			#player._possessables_in_range = player.get_node(\"GhostArea\").get_overlapping_areas()
+			
+			#if player._possessables_in_range.size() > 1:
+				
+				#unpossess()
+				
+				#for i in player._possessables_in_range.size():
+					
+					#if player._possessables_in_range[i] != self:
+						
+						#player._possessables_in_range[i].possess(player)
+						
+	
+	
 	"
 
 [sub_resource type="GDScript" id=2]
@@ -177,7 +213,6 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = SubResource( 1 )
-msg_posses_offset = Vector2( 0, 0 )
 
 [node name="Sounds" type="Node2D" parent="." index="0"]
 

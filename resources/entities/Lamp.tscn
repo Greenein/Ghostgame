@@ -96,13 +96,11 @@ turned_on = false
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
 
-editor/display_folded = true
 position = Vector2( 0, -24 )
 collision_layer = 4
 _sections_unfolded = [ "Collision" ]
-msg_posses_offset = Vector2( 0, -16 )
 
-[node name="Shape" type="CollisionShape2D" parent="Possessable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Possessable" index="0"]
 
 position = Vector2( 0, 8 )
 shape = SubResource( 2 )

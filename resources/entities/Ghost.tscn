@@ -51,6 +51,8 @@ var _possessables_in_range = Array();
 
 onready var _snd_move = $\"Sounds/Move\";
 
+var can_switch = true
+
 # Sets the state of the player.
 func set_state(value):
 	if value == STATE_POSSESSING:
@@ -70,9 +72,12 @@ func _ready():
 func _input(event):
 	
 	# Changes the possessable object
-	if event.is_action_pressed(\"switch_possessale\") and state != STATE_POSSESSING:
+	if event.is_action_pressed(\"switch_possessale\"):
 		
-		_possessible_index += 1
+		can_switch = true
+		
+		if state != STATE_POSSESSING:
+			_possessible_index += 1
 		
 	# Enables the Ghost to possess other objects
 	if event.is_action_pressed(\"possess\"):
