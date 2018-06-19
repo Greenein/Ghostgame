@@ -82,7 +82,7 @@ func _input(event):
 	# Enables the Ghost to possess other objects
 	if event.is_action_pressed(\"possess\"):
 		if _possessables_in_range.size() != 0 and state == STATE_IDLE:
-			_possessables_in_range[_possessible_index % _possessables_in_range.size()].possess(self);
+			_possessables_in_range[int(_possessible_index) % _possessables_in_range.size()].possess(self);
 		elif possessed_object != null and state == STATE_POSSESSING:
 			possessed_object.unpossess();
 	
@@ -131,7 +131,7 @@ func _process(delta):
 		if _possessables_in_range.size() > 0:
 			for i in _possessible_index:
 				_possessables_in_range[(i) % _possessables_in_range.size()].get_node(\"MSG_Possess\").hide();
-			_possessables_in_range[_possessible_index % _possessables_in_range.size()].get_node(\"MSG_Possess\").show();
+			_possessables_in_range[int(_possessible_index) % _possessables_in_range.size()].get_node(\"MSG_Possess\").show();
 	
 
 func limit_movement(axis):

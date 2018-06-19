@@ -139,24 +139,10 @@ func _input(event):
 			
 				if areas.size() > 0:
 					unpossess()
+					
+					player._possessible_index += 0.5
 					player.can_switch = false
-					areas[0].possess(player)
-					
-		#if possessed and event.is_action_pressed(\"switch_possessale\"):
-			#print(\"Press \" + str(self))
-			# reset player possess list
-			#player._possessables_in_range = player.get_node(\"GhostArea\").get_overlapping_areas()
-			
-			#if player._possessables_in_range.size() > 1:
-				
-				#unpossess()
-				
-				#for i in player._possessables_in_range.size():
-					
-					#if player._possessables_in_range[i] != self:
-						
-						#player._possessables_in_range[i].possess(player)
-						
+					areas[int(player._possessible_index) % areas.size()].possess(player)
 	
 	
 	"

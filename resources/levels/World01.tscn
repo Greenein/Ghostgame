@@ -99,7 +99,6 @@ position = Vector2( 200, 48 )
 
 [node name="Lamps" type="Node2D" parent="Objects" index="3"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -118,11 +117,11 @@ position = Vector2( 304, 224 )
 
 [node name="Lamp4" parent="Objects/Lamps" index="3" instance=ExtResource( 6 )]
 
-position = Vector2( 408, 224 )
+position = Vector2( 280, 224 )
 
 [node name="Lamp5" parent="Objects/Lamps" index="4" instance=ExtResource( 6 )]
 
-position = Vector2( 272, 224 )
+position = Vector2( 416, 224 )
 
 [node name="Lamp6" parent="Objects/Lamps" index="5" instance=ExtResource( 6 )]
 
