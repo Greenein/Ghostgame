@@ -1,0 +1,170 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/entities/Ghost.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+const ROOM_SIZE = Vector2(512, 288)
+
+onready var player = $\"Ghost\"
+
+var transition_speed = 15
+var areas = Array()
+var previous_area = null
+var current_area = null
+
+class Area:
+	var pos
+	var root_node
+	var scene
+	var scene_instance
+	
+	func _init(root_node, pos):
+		self.root_node = root_node
+		self.pos = pos
+		
+		reload()
+	
+	func activate():
+		if scene_instance:
+			scene_instance.get_node(\"LevelProperties\").activate()
+	
+	func deactivate():
+		if scene_instance:
+			scene_instance.get_node(\"LevelProperties\").deactivate()
+	
+	func reload():
+		if scene_instance != null:
+			unload()
+		
+		var resource = \"res://resources/levels/\" + str(pos.x) + \",\" + str(pos.y) + \".tscn\"
+		
+		if File.new().file_exists(resource):
+			self.scene = load(resource)
+			self.scene_instance = self.scene.instance()
+			self.scene_instance.global_position += pos * ROOM_SIZE
+			root_node.add_child(self.scene_instance)
+			print(\"Loaded scene \" + str(pos))
+	
+	func unload():
+		root_node.areas.erase(self)
+		if scene_instance != null:
+			root_node.remove_child(scene_instance)
+		print(\"Unloaded scene \" + str(pos))
+
+func round_area_position(pos):
+	pos.x = floor(pos.x / ROOM_SIZE.x)
+	pos.y = floor(pos.y / ROOM_SIZE.y)
+	return pos
+
+func load_area(pos):
+	var area = null
+	for i in range(0, areas.size()):
+		if areas[i].pos == pos:
+			area = areas[i]
+		else:
+			areas[i].deactivate()
+	
+	if area == null:
+		area = Area.new(self, pos)
+		areas.push_back(area)
+	
+	area.activate()
+	return area
+
+func _process(delta):
+	var pos = round_area_position(player.global_position)
+	
+	var camera = $\"Camera\"
+	var target_pos = (pos + Vector2(0.5, 0.5)) * ROOM_SIZE
+	camera.global_position += (target_pos - camera.global_position) * max(delta * transition_speed, 0)
+	if (target_pos - camera.global_position).length_squared() < 0.1:
+		if previous_area:
+			previous_area.unload()
+			previous_area = null
+	
+	var area = load_area(pos)
+	if area != current_area:
+		previous_area = current_area
+		current_area = area"
+
+[sub_resource type="Gradient" id=2]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0.417969, 0.877228, 1, 1, 0.810935, 0.439423, 0.945313, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+
+flags = 4
+gradient = SubResource( 2 )
+width = 128
+
+[node name="World" type="Node2D" index="0"]
+
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Background" type="ParallaxBackground" parent="." index="0"]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background" index="0"]
+
+motion_scale = Vector2( 0, 0 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 0, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxLayer" index="0"]
+
+position = Vector2( -368, 0 )
+rotation = 1.5708
+scale = Vector2( 3, 768 )
+texture = SubResource( 3 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="Camera" type="Camera2D" parent="." index="1"]
+
+position = Vector2( 256, 144 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -2147483647
+limit_top = -2147483647
+limit_right = 2147483647
+limit_bottom = 2147483647
+limit_smoothed = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 10.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
+
+[node name="Ghost" parent="." index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 256, 144 )
+
+

@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Ghostgame"
-run/main_scene="res://resources/levels/World01.tscn"
+run/main_scene="res://resources/levels/World.tscn"
 config/icon="res://icon.png"
 
 [display]

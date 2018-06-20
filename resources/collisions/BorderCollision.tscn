@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/collisions/RectangleBody.tscn" type="PackedScene" id=1]
 
-[node name="BorderCollision" type="Node2D" index="0"]
+[node name="BorderCollision" type="Node2D"]
 
 position = Vector2( -239.526, -141.308 )
 

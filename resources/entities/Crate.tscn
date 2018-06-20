@@ -49,6 +49,10 @@ func unpossessed(player):
 
 _sections_unfolded = [ "Collision", "collision" ]
 
+[node name="Possessable" parent="." index="0"]
+
+msg_posses_offset = Vector2( 0, -24 )
+
 [node name="CollisionShape2D" parent="." index="1" instance=ExtResource( 2 )]
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
