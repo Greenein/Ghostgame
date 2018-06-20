@@ -240,7 +240,6 @@ area_mask = 1
 
 [node name="MSG_Possess" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 visible = false
 z_index = 10
 script = SubResource( 2 )
@@ -250,7 +249,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 light_mask = 0
 material = SubResource( 3 )
-z_index = 1024
+z_index = 10
 z_as_relative = false
 texture = ExtResource( 4 )
 vframes = 2

@@ -48,6 +48,9 @@ func unpossessed(player):
 
 [node name="Barrel" index="0" instance=ExtResource( 1 )]
 
+z_index = 5
+_sections_unfolded = [ "Collision", "Z Index" ]
+
 [node name="Possessable" parent="." index="0"]
 
 msg_posses_offset = Vector2( 0, -24 )

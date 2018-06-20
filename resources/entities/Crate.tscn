@@ -47,7 +47,8 @@ func unpossessed(player):
 
 [node name="Crate" index="0" instance=ExtResource( 1 )]
 
-_sections_unfolded = [ "Collision", "collision" ]
+z_index = 5
+_sections_unfolded = [ "Collision", "Z Index", "collision" ]
 
 [node name="Possessable" parent="." index="0"]
 

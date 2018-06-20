@@ -91,7 +91,9 @@ tracks/0/keys = {
 
 [node name="Lamp" type="Node2D" index="0"]
 
+z_index = 6
 script = SubResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 turned_on = false
 
 [node name="Possessable" parent="." index="0" instance=ExtResource( 1 )]
@@ -139,7 +141,7 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Range", "Shadow", "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Sounds" type="Node2D" parent="." index="3"]
 

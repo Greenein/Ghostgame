@@ -178,12 +178,13 @@ tracks/0/keys = {
 
 [node name="Ghost" type="KinematicBody2D" index="0"]
 
+z_index = 8
 input_pickable = true
 collision_layer = 4
 collision_mask = 1
 collision/safe_margin = 0.08
 script = SubResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Z Index" ]
 movement_speed = 1200
 friction = 0.0001
 
