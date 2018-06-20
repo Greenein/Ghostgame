@@ -99,6 +99,7 @@ turned_on = false
 position = Vector2( 0, -24 )
 collision_layer = 4
 _sections_unfolded = [ "Collision" ]
+msg_posses_offset = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Possessable" index="0"]
 
